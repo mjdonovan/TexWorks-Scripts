@@ -1,0 +1,2 @@
+var openedFile = TW.app.openFile(currentDirectory + openFileName);  
+                 openedFile.show();
