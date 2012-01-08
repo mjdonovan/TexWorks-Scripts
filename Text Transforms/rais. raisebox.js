@@ -9,8 +9,8 @@
 // Shortcut: Alt+R,Alt+A,Alt+I,Alt+S
 
 var textBlock =  TW.target.selection;
-var putAtStart = "\\raisebox{-6mm}{$";
-var putAtEnd = "$}";
+var putAtStart = "\\raisebox{-6mm}{";
+var putAtEnd = "}";
 var INSERTME = putAtStart + textBlock + putAtEnd;
 var moveBackIfEmpty = putAtEnd.length;
 
