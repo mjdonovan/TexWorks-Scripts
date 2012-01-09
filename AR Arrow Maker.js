@@ -18,7 +18,7 @@ TW.target.selectRange(newlnoutside, 0);
 TW.target.insertText("\n\\InArrowEditingMode");
 TW.target.selectRange(startingposition+20, textBlock.length);
 
-TW.target.insertText("\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nZ: source entry @@Z@@ here\nA: direction    @@A@@ r\nB: Subscript    @@B@@ \nC: Superscript  @@C@@ \nD: Arrow type   @@D@@ \nE: Subscr pos   @@E@@ \nF: Supscr pos   @@F@@ \nG: Bend         @@G@@ eg ^1em\nH: Slide        @@H@@ eg +1ex\nI: Break Middle @@I@@ eg \\hole or x_1\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  { }\n@@@ Arrow Builder END\n\n");
+TW.target.insertText("\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nZ: source entry @@Z@@ here\nA: direction    @@A@@ r\nB: Superscript  @@B@@ \nC: Subscript    @@C@@ \nD: Arrow type   @@D@@ \nE: Supscr pos   @@E@@ \nF: Subscr pos   @@F@@ \nG: Bend         @@G@@ eg ^1em\nH: Slide        @@H@@ eg +1ex\nI: Break Middle @@I@@ eg \\hole or x_1\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  { }\n@@@ Arrow Builder END\n\n");
 TW.target.selectRange(TW.target.selectionStart-364, 1);
 }
 else
@@ -36,11 +36,11 @@ else
 	
 	var ZPos=BuilderContents.search("\nZ: source entry @@Z@@ ");
 	var APos=BuilderContents.search("\nA: direction    @@A@@ ");
-	var BPos=BuilderContents.search("\nB: Subscript    @@B@@ ");
-	var CPos=BuilderContents.search("\nC: Superscript  @@C@@ ");
+	var BPos=BuilderContents.search("\nB: Superscript  @@B@@ ");
+	var CPos=BuilderContents.search("\nC: Subscript    @@C@@ ");
 	var DPos=BuilderContents.search("\nD: Arrow type   @@D@@ ");
-	var EPos=BuilderContents.search("\nE: Subscr pos   @@E@@ ");
-	var FPos=BuilderContents.search("\nF: Supscr pos   @@F@@ ");
+	var EPos=BuilderContents.search("\nE: Supscr pos   @@E@@ ");
+	var FPos=BuilderContents.search("\nF: Subscr pos   @@F@@ ");
 	var GPos=BuilderContents.search("\nG: Bend         @@G@@ ");
 	var HPos=BuilderContents.search("\nH: Slide        @@H@@ ");
 	var IPos=BuilderContents.search("\nI: Break Middle @@I@@ ");
@@ -86,13 +86,13 @@ else
 	                   {ARROWTEXT = ARROWTEXT + "["+ APos + "]";}
 	if (BPos.length>0 || EPos.length>0)
 	{
-		ARROWTEXT = ARROWTEXT + "_-";
+		ARROWTEXT = ARROWTEXT + "^-";
 		if (EPos.length>0) {ARROWTEXT = ARROWTEXT + "("+ EPos + ")";}
 		ARROWTEXT = ARROWTEXT + "{"+ BPos + "}";
 	}
 	if (CPos.length>0 || FPos.length>0)
 	{
-		ARROWTEXT = ARROWTEXT + "^-";
+		ARROWTEXT = ARROWTEXT + "_-";
 		if (FPos.length>0) {ARROWTEXT = ARROWTEXT + "("+ FPos + ")";}
 		ARROWTEXT = ARROWTEXT + "{"+ CPos + "}";
 	}
