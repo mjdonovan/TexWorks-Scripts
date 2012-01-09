@@ -11,25 +11,17 @@
 var textBlock =  TW.target.selection;
 var startingposition = TW.target.selectionStart;
 var portion = TW.target.text;
-var newlnoutside = portion.search("\n");
- if (portion.substring(newlnoutside,newlnoutside+20)!="\n\\InArrowEditingMode")
-{
-TW.target.selectRange(newlnoutside, 0);
-TW.target.insertText("\n\\InArrowEditingMode");
-TW.target.selectRange(startingposition+20, textBlock.length);
+var BuildStart=portion.search("\n\n@@@ Arrow Builder START");
 
-TW.target.insertText("\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nZ: source entry @@Z@@ here\nA: direction    @@A@@ r\nB: Superscript  @@B@@ \nC: Subscript    @@C@@ \nD: Arrow type   @@D@@ \nE: Supscr pos   @@E@@ \nF: Subscr pos   @@F@@ \nG: Bend         @@G@@ eg ^1em\nH: Slide        @@H@@ eg +1ex\nI: Break Middle @@I@@ eg \\hole or x_1\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  { }\n@@@ Arrow Builder END\n\n");
-TW.target.selectRange(TW.target.selectionStart-364, 1);
+//THE BIG IF STATEMENT -  
+if (BuildStart<0)
+{
+	TW.target.insertText("\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nZ: source entry @@Z@@ here\nA: direction    @@A@@ r\nB: Superscript  @@B@@ \nC: Subscript    @@C@@ \nD: Arrow type   @@D@@ \nE: Supscr pos   @@E@@ \nF: Subscr pos   @@F@@ \nG: Bend         @@G@@ eg ^1em\nH: Slide        @@H@@ eg +1ex\nI: Break Middle @@I@@ eg \\hole or x_1\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  { }\n@@@ Arrow Builder END\n\n");
+	TW.target.selectRange(TW.target.selectionStart-1, 1);
+	TW.target.selectRange(TW.target.selectionStart-363, 1);
 }
 else
 {
-	//remove the flag
-	TW.target.selectRange(newlnoutside,20);
-	TW.target.insertText("");
-	portion = TW.target.text;
-	//find the start of the builder
-
-	var BuildStart=portion.search("\n\n@@@ Arrow Builder START");
 	var BuildEnd=portion.search("@@@ Arrow Builder END\n\n")+23;
 	var BuilderContents = portion.substring(BuildStart,BuildEnd);
 	TW.target.selectRange(BuildStart, BuildEnd-BuildStart);
