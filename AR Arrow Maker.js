@@ -1,12 +1,12 @@
 // TeXworksScript
-// Title:  \Arrow Builder
+// Title:  arrow builder
 // Description:  Builds an arrow
 // Author:  Michael Donovan
 // Version: 
 // Date: 
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Alt+Ctrl+A
+// Shortcut: F7
 
 var textBlock =  TW.target.selection;
 var startingposition = TW.target.selectionStart;
