@@ -9,17 +9,34 @@
 // Shortcut: Esc
 
 
- var portion = TW.target.text;
-// var lengthofdoc = portion.length;
-// var chooseFrom = []; 
+var portion = TW.target.text;
+if (TW.target.selection=="\u00BF")
+{
+	TW.target.insertText("");
+	portion = TW.target.text;
+	null;
+}
+else if (TW.target.selection=="\u06F7" || TW.target.selection=="\u06F8")
+{
+	if (TW.target.selectionStart>1){
+		TW.target.selectRange(TW.target.selectionStart-2, 4);
+	}
+	TW.target.insertText("");
+	portion = TW.target.text;
+	null;
+}
+else
+{
  var portion = TW.target.text.substr(TW.target.selectionStart)
-//     portion = portion.substr(TW.target.selectionStart);
-//     if (portion.length>100)
-//     {
-//          portion=portion.substring(0,100);
-//     }
-// var portionlength = portion.length;
- 
+
+ var qFLAG  = portion.search(/\u00BF/); 
+ var sFLAG = portion.search(/[\u06F7\u06F8]/); //A flag for sub and superscripts in {}
+
+ if (qFLAG<0) {qFLAG=10000}
+ if (sFLAG<0) {sFLAG=10000}
+ var FIRSTFLAG = Math.min(qFLAG,sFLAG);
+if(FIRSTFLAG==10000)
+{
  var endgp = portion.search(/\}/);
  var curly = portion.search(/\\\}/);
  var round = portion.search(/\)/);
@@ -72,7 +89,12 @@ icoms+=2;
  if (DIST>10000)
   {DIST=0;}
  TW.target.selectRange(TW.target.selectionStart+DIST, 0);
-
+}
+else
+{
+ TW.target.selectRange(TW.target.selectionStart+FIRSTFLAG, 1);
+}
+}
 
 /*
 TW.target.insertText("\n");
