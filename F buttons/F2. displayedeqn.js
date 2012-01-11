@@ -11,6 +11,10 @@
 var textBlock =  TW.target.selection;
 var putAtStart = "\\[";
 var putAtEnd = "\\]\n";
+if (TW.target.text[TW.target.selectionStart-1]!="\n")
+{
+	putAtStart="\n"+putAtStart;
+}
 var INSERTME = putAtStart + textBlock + putAtEnd;
 var moveBackIfEmpty = putAtEnd.length;
 
