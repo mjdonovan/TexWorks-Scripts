@@ -10,7 +10,7 @@
 
 
 var portion = TW.target.text;
-if (TW.target.selection=="\u00BF")
+if (TW.target.selection=="\u00BF"||TW.target.selection=="\u25D9")
 {
 	TW.target.insertText("");
 	portion = TW.target.text;
@@ -27,73 +27,93 @@ else if (TW.target.selection=="\u06F7" || TW.target.selection=="\u06F8")
 }
 else
 {
- var portion = TW.target.text.substr(TW.target.selectionStart)
+	 var portion = TW.target.text.substr(TW.target.selectionStart)
+	
+	 var qFLAG  = portion.search(/[\u00BF\u25D9]/);  
+		//One character data entry flag
+	 var sFLAG = portion.search(/[\u06F7\u06F8]/); 
+		//A flag for cancellable sub and superscripts living in in _{}
+	
+	 if (qFLAG<0) {qFLAG=10000}
+	 if (sFLAG<0) {sFLAG=10000}
+	 var FIRSTFLAG = Math.min(qFLAG,sFLAG);
+	
+	 var endgp = portion.search(/\}/);
+	 var curly = portion.search(/\\\}/);
+	 var round = portion.search(/\)/);
+	 var squar = portion.search(/\]/);
+	 var endmA = portion.search(/\\\]/);
+	 var endmB = portion.search(/\$/);
+	 var rangl = portion.search(/\\rangle/);
+	 var verti = portion.search(/\|/);
+	 var VERTI = portion.search(/\\\|/);
+	 var newln = portion.search(/\n/);
+	 var amper = portion.search(/&/);
+	
+	 var icoms = portion.search(/''/);
+	 var icomm = portion.search(/'/);
+	
+	 if (endgp<0) {endgp=10000}
+	 if (curly<0) {curly=10000}
+	 if (round<0) {round=10000}
+	 if (squar<0) {squar=10000}
+	 if (endmA<0) {endmA=10000}
+	 if (endmB<0) {endmB=10000}
+	 if (rangl<0) {rangl=10000}
+	 if (verti<0) {verti=10000}
+	 if (VERTI<0) {VERTI=10000}
+	 if (newln<0) {newln=10000}
+	 if (amper<0) {amper=10000}
+	
+	 if (icoms == icomm) {icomm=-1}
+	 if (icoms<0) {icoms=10000}
+	 if (icomm<0) {icomm=10000}
+	
+	endgp+=1;
+	curly+=2;
+	round+=1;
+	squar+=1;
+	endmA+=2;
+	endmB+=1;
+	rangl+=7;
+	verti+=1;
+	VERTI+=2;
+	newln+=1;
+	amper+=1;
+	
+	icomm+=1;
+	icoms+=2;
+	var UnimportantDIST=Math.min(endmA,
+	              newln,
+	              amper,icomm,icoms);
+	
+	 var DIST=Math.min(endgp,curly,round,squar,endmA,
+	              endmB,rangl,verti,VERTI,newln,
+	              amper,icomm,icoms);
 
- var qFLAG  = portion.search(/\u00BF/); 
- var sFLAG = portion.search(/[\u06F7\u06F8]/); //A flag for sub and superscripts in {}
+// INTENDED BEHAVIOR: If the next thing you see is one of: an endline, inverted commas, an ampersand,  a $, then skip directly to the next flag character.
+	if ((UnimportantDIST==DIST ||FIRSTFLAG<DIST) && FIRSTFLAG!=10000)
+	{
+		 TW.target.selectRange(TW.target.selectionStart+FIRSTFLAG, 1);
+	}
+	else
+	{
+		if (DIST>10000) {DIST=0;}
+		TW.target.selectRange(TW.target.selectionStart+DIST, 0);
+	}
 
- if (qFLAG<0) {qFLAG=10000}
- if (sFLAG<0) {sFLAG=10000}
- var FIRSTFLAG = Math.min(qFLAG,sFLAG);
-if(FIRSTFLAG==10000)
-{
- var endgp = portion.search(/\}/);
- var curly = portion.search(/\\\}/);
- var round = portion.search(/\)/);
- var squar = portion.search(/\]/);
- var endmA = portion.search(/\\\]/);
- var endmB = portion.search(/\$/);
- var rangl = portion.search(/\\rangle/);
- var verti = portion.search(/\|/);
- var VERTI = portion.search(/\\\|/);
- var newln = portion.search(/\n/);
- var amper = portion.search(/&/);
-
- var icoms = portion.search(/''/);
- var icomm = portion.search(/'/);
-
- if (endgp<0) {endgp=10000}
- if (curly<0) {curly=10000}
- if (round<0) {round=10000}
- if (squar<0) {squar=10000}
- if (endmA<0) {endmA=10000}
- if (endmB<0) {endmB=10000}
- if (rangl<0) {rangl=10000}
- if (verti<0) {verti=10000}
- if (VERTI<0) {VERTI=10000}
- if (newln<0) {newln=10000}
- if (amper<0) {amper=10000}
-
- if (icoms == icomm) {icomm=-1}
- if (icoms<0) {icoms=10000}
- if (icomm<0) {icomm=10000}
-
-endgp+=1;
-curly+=2;
-round+=1;
-squar+=1;
-endmA+=2;
-endmB+=1;
-rangl+=7;
-verti+=1;
-VERTI+=2;
-newln+=1;
-amper+=1;
-
-icomm+=1;
-icoms+=2;
-
- var DIST=Math.min(endgp,curly,round,squar,endmA,
-              endmB,rangl,verti,VERTI,newln,
-              amper,icomm,icoms);
- if (DIST>10000)
-  {DIST=0;}
- TW.target.selectRange(TW.target.selectionStart+DIST, 0);
-}
-else
-{
- TW.target.selectRange(TW.target.selectionStart+FIRSTFLAG, 1);
-}
+/*	
+	USED TO HAVE:
+	if(FIRSTFLAG==10000)
+	{
+	 if (DIST>10000)
+	  {DIST=0;}
+	 TW.target.selectRange(TW.target.selectionStart+DIST, 0);
+	}
+	else
+	{
+	 TW.target.selectRange(TW.target.selectionStart+FIRSTFLAG, 1);
+	}*/
 }
 
 /*
