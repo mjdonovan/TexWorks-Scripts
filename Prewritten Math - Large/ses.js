@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+S, Alt+E, Alt+S
     
-TW.target.insertText("\\[\\xymatrix{\n0\\ar[r]&\nA\\ar[r]&\nB\\ar[r]&\nC\\ar[r]&\n0\n}\\]\n");
+TW.target.insertText("\\[\\xymatrix{\n0\\ar[r]&\n\u25D9\\ar[r]&\n\u25D9\\ar[r]&\n\u25D9\\ar[r]&\n0\n}\\]\n");
 TW.target.selectRange(TW.target.selectionStart-33, 1)
