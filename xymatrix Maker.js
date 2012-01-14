@@ -14,7 +14,7 @@ var portion = TW.target.text;
 var BuildStart=portion.search("\n\n@@@ xymatrix Builder START");
 
 var StartingText=
-"\n\n@@@ xymatrix Builder START\nStartStartStartStartStartStart\nA: Size (#Row#Col)  @@A@@ 22\nB: Delimiters       @@B@@ \\[\nC: Spacing (all)    @@C@@ \nD: Spacing (row)    @@D@@ \nE: Spacing (col)    @@E@@ \nF: Uniform spacing  @@F@@ eg 1-4\nG: Inline?          @@G@@ \nH: vcenter?         @@H@@ \nI: Rotate           @@I@@ eg ur\nJ: Small objects?   @@J@@ \nK: Small labels?    @@K@@ \nL: Settings only?   @@L@@ \nEndEndEndEndEndEndEndEndEndEnd\nF=1 spaces equal   F=2 ignore entry sizes\nF=3 rows equal     F=4 columns equal\n@@@ xymatrix Builder END\n\n"
+"\n\n@@@ xymatrix Builder START\nStartStartStartStartStartStart\nA: (Height, Width)  @@A@@ 22\nB: Delimiters       @@B@@ \\[\nC: Row and Column   @@C@@ \nD: Row height       @@D@@ \nE: Column width     @@E@@ \nF: Uniform spacing  @@F@@ eg 1-4\nG: Inline?          @@G@@ \nH: vcenter?         @@H@@ \nI: Rotate           @@I@@ eg ur\nJ: Small objects?   @@J@@ \nK: Small labels?    @@K@@ \nL: Settings only?   @@L@@ \nEndEndEndEndEndEndEndEndEndEnd\nF=1 spaces equal   F=2 ignore entry sizes\nF=3 rows equal     F=4 columns equal\n@@@ xymatrix Builder END\n\n"
 
 if (BuildStart<0)
 {
