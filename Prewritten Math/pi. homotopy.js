@@ -8,5 +8,6 @@
 // Context: TeXDocument
 // Shortcut: Alt+P, Alt+I
     
-TW.target.insertText("\\pi_*()");
-TW.target.selectRange(TW.target.selectionStart-1, 0)
+
+TW.target.insertText("\\pi_{*\u25BA}(\u00BF)");
+TW.target.selectRange(TW.target.selectionStart-6, 1)
