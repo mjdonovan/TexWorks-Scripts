@@ -9,16 +9,138 @@
 // Shortcut: Esc
 
 /*
- DESTROY  *      00BF 25D9
- DESTROY --*-    06F7 06F8
- SKIPPER         25BA
+ SKIPPER 						25BA
 
- MAYBE NOW THAT I HAVE SKIPPERS, THERE'S NEVER A NEED TO HAVE FLAGS BE SEEN EARLIEST
+FLAGS:
+ characters which get destroyed when highlighted alone:	00BF 25D9
+ characters * which destroy --*- when highlighted alone	06F7 06F8
+ DESTROY whatever's highlighted and continue				//not yet
+ DESTROY _* and stop      				03E2		
+ DESTROY next 0<n<=14 characters and skip to next flag	1F40-1F4D
+ DESTROY next 0<n<=16 characters and stop		1F80-1F8F	//not yet
+ SWAP for \DASH and continue				25CF
+
+Should be:
+continue = as if nothin happened
+skip     = to next flag
+stop     = stop
+
+
+MAYBE NOW THAT I HAVE SKIPPERS, THERE'S NEVER A NEED TO HAVE FLAGS BE SEEN EARLIEST
+
+
+Other scripts using this machine:
+Hom, Tor, Ext, tensor
+Pi
+(co)homology
+frac
 */
 
 
 var DOTHESEARCH =1;
+var SKIPMODE = 0;
 var portion = TW.target.text;
+
+if (TW.target.selection=="\u25CF")
+{
+	TW.target.insertText("\\DASH ");
+}
+
+if (TW.target.selection=="\u03E2")
+{
+	TW.target.selectRange(Math.max(TW.target.selectionStart-1,0),Math.min(2,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+
+
+
+if (TW.target.selection=="\u1F40")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(2,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F41")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(3,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F42")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(4,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F43")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(5,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F44")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(6,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F45")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(7,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F46")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(8,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F47")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(9,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F48")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(10,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F49")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(11,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F4A")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(12,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F4B")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(13,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F4C")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(14,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+if (TW.target.selection=="\u1F4D")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(15,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+	SKIPMODE=1;
+}
+
+
 if (TW.target.selection=="\u00BF"||TW.target.selection=="\u25D9")
 {
 	TW.target.insertText("");
@@ -50,18 +172,36 @@ if (DOTHESEARCH==1)
 {
 	var portion = TW.target.text.substr(TW.target.selectionStart)
 	
+	var SKIPPER = portion.search(/\u25BA/); 
+		//A flag to say ''skip to next flag''
+
+	var commaFLAG = portion.search(/\u03E2/);
+		//deletes previous character and itself
+	var dashFLAG = portion.search(/\u25CF/);
+		//replaces itself with \DASH
 	var qFLAG  = portion.search(/[\u00BF\u25D9]/);  
 		//One character data entry flag
 	var sFLAG = portion.search(/[\u06F7\u06F8]/); 
-		//A flag for cancellable sub and superscripts living in in _{}
-	var SKIPPER = portion.search(/\u25BA/); 
-		//A flag to say ''skip to next flag''
+		//A flag for cancellable sub and superscripts living in _{}
+	var dskipFLAG= portion.search(/[\u1F40\u1F41\u1F42\u1F43\u1F44\u1F45\u1F46\u1F47\u1F48\u1F49\u1F4A\u1F4B\u1F4C\u1F4D]/); 
+		//A flag for delete next n then skip
+	var dstopFLAG= portion.search(/[\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F]/); 
+		//A flag for delete next n then stop
 	
-	if (qFLAG<0) {qFLAG=10000}
-	if (sFLAG<0) {sFLAG=10000}
-	if (SKIPPER<0) {SKIPPER=10000}
+	if (qFLAG<0)	 	{qFLAG=10000}
+	if (sFLAG<0) 		{sFLAG=10000}
+	if (dashFLAG<0) 	{dashFLAG=10000}
+	if (dskipFLAG<0) 	{dskipFLAG=10000}
+	if (dstopFLAG<0) 	{dstopFLAG=10000}
+	if (commaFLAG<0)	{commaFLAG=10000}
+	if (SKIPPER<0) 		{SKIPPER=10000}
+
 	var FIRSTFLAG = Math.min(qFLAG,sFLAG);
-	
+	    FIRSTFLAG = Math.min(FIRSTFLAG,commaFLAG);
+	    FIRSTFLAG = Math.min(FIRSTFLAG,dashFLAG);
+	    FIRSTFLAG = Math.min(FIRSTFLAG,dskipFLAG);
+	    FIRSTFLAG = Math.min(FIRSTFLAG,dstopFLAG);
+
 	var endgp = portion.search(/\}/);
 	var curly = portion.search(/\\\}/);
 	var round = portion.search(/\)/);
@@ -117,18 +257,19 @@ if (DOTHESEARCH==1)
 	var selst = TW.target.selectionStart;
 
 // INTENDED BEHAVIOR: If the next thing you see is one of: an endline, inverted commas, an ampersand,  a $, then skip directly to the next flag character.
-	var SKIPMODE = 0;
+	var skippersdeleted=0;
 	if (SKIPPER<DIST && SKIPPER<FIRSTFLAG && SKIPPER!=10000)
 	{
 		TW.target.selectRange(selst+SKIPPER, 1);
 		TW.target.insertText("");
 		SKIPMODE=1;
+		skippersdeleted=1;
 	}
 	if ((SKIPMODE == 1 || UnimportantDIST==DIST ||FIRSTFLAG<DIST) && FIRSTFLAG!=10000)
 	{
 		if (SKIPMODE == 1)
 		{
-			 TW.target.selectRange(selst+FIRSTFLAG-1, 1);
+			 TW.target.selectRange(selst+FIRSTFLAG-skippersdeleted, 1);
 		}
 		else
 		{
@@ -140,5 +281,7 @@ if (DOTHESEARCH==1)
 		if (DIST>10000) {DIST=0;}
 		TW.target.selectRange(TW.target.selectionStart+DIST, 0);
 	}
+	if (SKIPMODE == 1 && FIRSTFLAG==10000)
+	{ null; }
 }
  
