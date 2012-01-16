@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+9
     
-TW.target.insertText("\\begin{enumerate}\\squishlist\n\\item \n\\end{enumerate}\n");
-TW.target.selectRange(TW.target.selectionStart-17, 0)
+TW.target.insertText("\\begin{enumerate}\\squishlist\n\\item \n\\end{enumerate}");
+TW.target.selectRange(TW.target.selectionStart-16, 0)

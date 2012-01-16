@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+8
     
-TW.target.insertText("\\begin{itemise}\n\\item \n\\end{itemise}\n");
-TW.target.selectRange(TW.target.selectionStart-15, 0)
+TW.target.insertText("\\begin{itemise}\n\\item \n\\end{itemise}");
+TW.target.selectRange(TW.target.selectionStart-14, 0)

@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+Shift+8
     
-TW.target.insertText("\\begin{itemize}\\squishlist\n\\item \n\\end{itemize}\n");
-TW.target.selectRange(TW.target.selectionStart-15, 0)
+TW.target.insertText("\\begin{itemize}\\squishlist\n\\item \n\\end{itemize}");
+TW.target.selectRange(TW.target.selectionStart-14, 0)
