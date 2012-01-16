@@ -12,8 +12,8 @@ var textBlock =  TW.target.selection;
 
 if (textBlock.length == 0)
 {
-  TW.target.insertText("\\frac{}{}");
-  TW.target.selectRange(TW.target.selectionStart-3, 0)
+  TW.target.insertText("\\frac{\u00BF\u25BA}{\u00BF}");
+  TW.target.selectRange(TW.target.selectionStart-6, 1);
 }
 if (textBlock.length != 0)
 {
