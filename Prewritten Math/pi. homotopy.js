@@ -9,5 +9,5 @@
 // Shortcut: Alt+P, Alt+I
     
 
-TW.target.insertText("\\pi_{*\u25BA}(\u00BF)");
+TW.target.insertText("\\pi_{*\u25BA}(\u25CF)");
 TW.target.selectRange(TW.target.selectionStart-6, 1)
