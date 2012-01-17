@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title: Pullback square
+// Title: Epic pullback square
 // Description: inserts a cartesian square
 // Author:  Michael Donovan
 // Version: 0.2
