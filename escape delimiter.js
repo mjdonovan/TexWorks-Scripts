@@ -9,15 +9,25 @@
 // Shortcut: Esc
 
 /*
- SKIPPER 						25BA
+SKIPPER: 						25BA
 
 FLAGS:
  characters which get destroyed when highlighted alone:	00BF 25D9
- characters * which destroy --*- when highlighted alone	06F7 06F8
+
+ characters * which destroy --*s-, where s is a
+	potential skipper, and if s is there, skip	06F7 06F8
+
+ characters * which destroy ---*s-, where s is a
+	potential skipper, and if s is there, skip	0416
+
  DESTROY whatever's highlighted and continue				//not yet
- DESTROY _* and stop      				03E2		
+
+ DESTROY -* and stop      				03E2		
+
  DESTROY next 0<n<=14 characters and skip to next flag	1F40-1F4D
+
  DESTROY next 0<n<=16 characters and stop		1F80-1F8F	//not yet
+
  SWAP for \DASH and continue				25CF
 
 Should be:
@@ -34,6 +44,8 @@ Hom, Tor, Ext, tensor
 Pi
 (co)homology
 frac
+pushout, pullback
+cases
 */
 
 
@@ -168,6 +180,23 @@ else if (TW.target.selection=="\u06F7" || TW.target.selection=="\u06F8")
 		portion = TW.target.text;
 	}
 }
+else if (TW.target.selection=="\u0416")
+{
+	if (portion[TW.target.selectionStart+1]!="\u25BA") 
+	{
+		DOTHESEARCH=0
+		TW.target.selectRange(Math.max(0,TW.target.selectionStart-3), 5);
+		TW.target.insertText("");
+		null;
+	}
+	else
+	{
+		TW.target.selectRange(Math.max(0,TW.target.selectionStart-3), 6);
+		TW.target.insertText("\u25BA");
+		TW.target.selectRange(TW.target.selectionStart-1, 0);
+		portion = TW.target.text;
+	}
+}
 if (DOTHESEARCH==1)
 {
 	var portion = TW.target.text.substr(TW.target.selectionStart)
@@ -181,8 +210,8 @@ if (DOTHESEARCH==1)
 		//replaces itself with \DASH
 	var qFLAG  = portion.search(/[\u00BF\u25D9]/);  
 		//One character data entry flag
-	var sFLAG = portion.search(/[\u06F7\u06F8]/); 
-		//A flag for cancellable sub and superscripts living in _{}
+	var sFLAG = portion.search(/[\u06F7\u06F8\u0416]/); 
+		//A flag for cancellable sub and superscripts living in _{} or _-{}
 	var dskipFLAG= portion.search(/[\u1F40\u1F41\u1F42\u1F43\u1F44\u1F45\u1F46\u1F47\u1F48\u1F49\u1F4A\u1F4B\u1F4C\u1F4D]/); 
 		//A flag for delete next n then skip
 	var dstopFLAG= portion.search(/[\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F]/); 
