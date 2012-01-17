@@ -13,7 +13,7 @@ var startingposition = TW.target.selectionStart;
 var portion = TW.target.text;
 var BuildStart=portion.search("\n\n@@@ Arrow Builder START");
 
-var StartingText="\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nA: Direction    @@A@@ r\nB: Superscript  @@B@@ \nC: Subscript    @@C@@ \nD: Arrow type   @@D@@ \nE: Supscr pos   @@E@@ \nF: Subscr pos   @@F@@ \nG: Bend         @@G@@ eg ^1em\nH: Slide        @@H@@ eg +1ex\nI: Break Middle @@I@@ eg \\hole or x_1\nJ: Pass Under   @@J@@ eg [r][rr]\nK: 2-cell direc @@K@@ eg rr\nL: 2-arr label  @@L@@ eg a\nM: omit curves? @@M@@ \nN: Extra curve  @@N@@ eg 5-9\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  { }\n@@@ Arrow Builder END\n\n"
+var StartingText="\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nA: Direction    @@A@@ r\nB: Superscript  @@B@@ \nC: Subscript    @@C@@ \nD: Arrow type   @@D@@ \nE: Supscr pos   @@E@@ \nF: Subscr pos   @@F@@ \nG: Bend         @@G@@ eg ^1em\nH: Slide        @@H@@ eg +1ex\nI: Break Middle @@I@@ eg \\hole or x_1\nJ: Pass Under   @@J@@ eg [r][rr]\nW: 2-cell direc @@W@@ eg rr\nX: 2-arr label  @@X@@ eg a\nY: omit curves? @@Y@@ \nZ: Extra curve  @@Z@@ eg 5-9\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  none\n@@@ Arrow Builder END\n\n"
 
 //THE BIG IF STATEMENT -  
 if (BuildStart<0)
@@ -39,10 +39,10 @@ else
 	var HPos=BuilderContents.search("\nH: Slide        @@H@@ ");
 	var IPos=BuilderContents.search("\nI: Break Middle @@I@@ ");
 	var JPos=BuilderContents.search("\nJ: Pass Under   @@J@@ ");
-	var KPos=BuilderContents.search("\nK: 2-cell direc @@K@@ ");
-	var LPos=BuilderContents.search("@@L@@ ")-17;
-	var MPos=BuilderContents.search("@@M@@ ")-17;
-	var NPos=BuilderContents.search("\nN: Extra curve  @@N@@ ");
+	var WPos=BuilderContents.search("\nW: 2-cell direc @@W@@ ");
+	var XPos=BuilderContents.search("@@X@@ ")-17;
+	var YPos=BuilderContents.search("@@Y@@ ")-17;
+	var ZPos=BuilderContents.search("\nZ: Extra curve  @@Z@@ ");
 	var ENDS=BuilderContents.search("\nEndEndEndEndEndEndEndEndEndEnd");
 	APos=BuilderContents.substring(APos+23,BPos);
 	BPos=BuilderContents.substring(BPos+23,CPos);
@@ -53,11 +53,11 @@ else
 	GPos=BuilderContents.substring(GPos+23,HPos);
 	HPos=BuilderContents.substring(HPos+23,IPos);
 	IPos=BuilderContents.substring(IPos+23,JPos);
-	JPos=BuilderContents.substring(JPos+23,KPos);
-	KPos=BuilderContents.substring(KPos+23,LPos);
-	LPos=BuilderContents.substring(LPos+23,MPos);
-	MPos=BuilderContents.substring(MPos+23,NPos);
-	NPos=BuilderContents.substring(NPos+23,ENDS);
+	JPos=BuilderContents.substring(JPos+23,WPos);
+	WPos=BuilderContents.substring(WPos+23,XPos);
+	XPos=BuilderContents.substring(XPos+23,YPos);
+	YPos=BuilderContents.substring(YPos+23,ZPos);
+	ZPos=BuilderContents.substring(ZPos+23,ENDS);
 
 	if (APos.substring(0,2)=="eg") { APos=""}
 	if (BPos.substring(0,2)=="eg") { BPos=""}
@@ -69,10 +69,10 @@ else
 	if (HPos.substring(0,2)=="eg") { HPos=""}
 	if (IPos.substring(0,2)=="eg") { IPos=""}
 	if (JPos.substring(0,2)=="eg") { JPos=""}
-	if (KPos.substring(0,2)=="eg") { KPos=""}
-	if (LPos.substring(0,2)=="eg") { LPos=""}
-	if (MPos.substring(0,2)=="eg") { MPos=""}
-	if (NPos.substring(0,2)=="eg") { NPos=""}
+	if (WPos.substring(0,2)=="eg") { WPos=""}
+	if (XPos.substring(0,2)=="eg") { XPos=""}
+	if (YPos.substring(0,2)=="eg") { YPos=""}
+	if (ZPos.substring(0,2)=="eg") { ZPos=""}
 
 	if (DPos=="1") {DPos="->>"}
 	if (DPos=="2") {DPos="^{(}->"}
@@ -83,28 +83,32 @@ else
 	if (DPos=="7") {DPos="~>"}
 	if (DPos=="8") {DPos="="}
 	if (DPos=="9") {DPos="=>"}
-	if (DPos=="0") {DPos="{ }"}
+	if (DPos=="0") {DPos="BLANKME"}
 
 
 	var ARROWTEXT = "\\ar"
-if(KPos.length>0){
+if(WPos.length>0){
 	ARROWTEXT = "%\\usepackage[all,2cell]{xy}\n%\\UseAllTwocells\n\\xtwocell"
-	ARROWTEXT = ARROWTEXT + "["+ KPos + "]{}";
-	if (MPos=="y") 
+	ARROWTEXT = ARROWTEXT + "["+ WPos + "]{}";
+	if (YPos=="y") 
 	{
 		BPos=""; CPos=""; ARROWTEXT = ARROWTEXT + "\\omit";
 	}
-	else if (NPos.length>0)
+	else if (ZPos.length>0)
 	{
-		ARROWTEXT = ARROWTEXT + "<"+ NPos + ">";
+		ARROWTEXT = ARROWTEXT + "<"+ ZPos + ">";
 	}
 	if (BPos.length>0) {ARROWTEXT = ARROWTEXT + "^{"+ BPos + "}";}
 	if (CPos.length>0) {ARROWTEXT = ARROWTEXT + "_{"+ CPos + "}";}
-	if (LPos.length>0) {ARROWTEXT = ARROWTEXT + "{{"+ LPos + "}}";}
+	if (XPos.length>0) {ARROWTEXT = ARROWTEXT + "{{"+ XPos + "}}";}
 }
 else
 {
-	if (DPos.length>0) {ARROWTEXT = ARROWTEXT + "@{"+ DPos + "}";}
+	if (DPos.length>0)
+	{
+		if (DPos=="BLANKME") {DPos=""}
+		ARROWTEXT = ARROWTEXT + "@{"+ DPos + "}";
+	}
 	if (GPos.length>0) {ARROWTEXT = ARROWTEXT + "@/"+ GPos + "/";}
 	if (HPos.length>0) {ARROWTEXT = ARROWTEXT + "@<"+ HPos + ">";}
 	if (JPos.length>0) {ARROWTEXT = ARROWTEXT + "'"+ JPos;}
