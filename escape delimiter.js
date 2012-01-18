@@ -29,7 +29,7 @@ FLAGS:
  DESTROY next 0<n<=16 characters and stop		1F80-1F8F	//not yet
 
  Destroy next 24 characters and continue		1FAE
- Destroy previous 15 and next 3, \n and continue	1FAF
+ Destroy previous 15 and next 3 and continue		1FAF
 
  SWAP for \DASH and continue				25CF
 
@@ -40,7 +40,7 @@ stop     = stop
 
 
 MAYBE NOW THAT I HAVE SKIPPERS, THERE'S NEVER A NEED TO HAVE FLAGS BE SEEN EARLIEST
-
+IDEA - DO THIS, and include skippers in the FIRSTFLAG definition.
 
 Other scripts using this machine:
 Hom, Tor, Ext, tensor
@@ -77,13 +77,13 @@ if (TW.target.selection=="\u03E2")
 
 if (TW.target.selection=="\u1FAF")
 {
-	TW.target.selectRange(TW.target.selectionStart,Math.min(29,TW.target.text.length-TW.target.selectionStart));
+	TW.target.selectRange(TW.target.selectionStart,Math.min(32,TW.target.text.length-TW.target.selectionStart));
 	TW.target.insertText("");
 }
 if (TW.target.selection=="\u1FAE")
 {
-	TW.target.selectRange(Math.max(0,TW.target.selectionStart-15), 19);
-	TW.target.insertText("\n");
+	TW.target.selectRange(Math.max(0,TW.target.selectionStart-15), 18);
+	TW.target.insertText("");
 }
 
 if (TW.target.selection=="\u1F40")

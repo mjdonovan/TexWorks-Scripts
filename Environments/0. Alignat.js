@@ -8,7 +8,7 @@
 // Context: TeXDocument
 // Shortcut: Alt+0
     
-var putAtStart="\n\\begin{alignat*}{2}\n\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\u1FAF\u25BA\\\\\u00BF\u25BA&=\u00BF\u25BA&\\qquad&\\text{(\u1FAE)}\n\\end{alignat*}\n"
+var putAtStart="\n\\begin{alignat*}{2}\n\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)}\u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)}\n\\end{alignat*}\n"
 var startingplace = 21;
 
 if (TW.target.text[TW.target.selectionStart-1]!="\n")
