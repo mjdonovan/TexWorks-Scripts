@@ -28,6 +28,9 @@ FLAGS:
 
  DESTROY next 0<n<=16 characters and stop		1F80-1F8F	//not yet
 
+ Destroy next 24 characters and continue		1FAE
+ Destroy previous 15 and next 3, \n and continue	1FAF
+
  SWAP for \DASH and continue				25CF
 
 Should be:
@@ -49,6 +52,9 @@ cases
 thin
 SES
 Adjunction
+alignat
+
+F buttons use all the flags.
 */
 
 
@@ -69,6 +75,16 @@ if (TW.target.selection=="\u03E2")
 }
 
 
+if (TW.target.selection=="\u1FAF")
+{
+	TW.target.selectRange(TW.target.selectionStart,Math.min(29,TW.target.text.length-TW.target.selectionStart));
+	TW.target.insertText("");
+}
+if (TW.target.selection=="\u1FAE")
+{
+	TW.target.selectRange(Math.max(0,TW.target.selectionStart-15), 19);
+	TW.target.insertText("\n");
+}
 
 if (TW.target.selection=="\u1F40")
 {
@@ -219,6 +235,7 @@ if (DOTHESEARCH==1)
 		//A flag for delete next n then skip
 	var dstopFLAG= portion.search(/[\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F]/); 
 		//A flag for delete next n then stop
+	var bombFLAG=portion.search(/[\u1FAE\u1FAF]/);
 	
 	if (qFLAG<0)	 	{qFLAG=10000}
 	if (sFLAG<0) 		{sFLAG=10000}
@@ -226,6 +243,7 @@ if (DOTHESEARCH==1)
 	if (dskipFLAG<0) 	{dskipFLAG=10000}
 	if (dstopFLAG<0) 	{dstopFLAG=10000}
 	if (commaFLAG<0)	{commaFLAG=10000}
+	if (bombFLAG<0)		{bombFLAG=10000}
 	if (SKIPPER<0) 		{SKIPPER=10000}
 
 	var FIRSTFLAG = Math.min(qFLAG,sFLAG);
@@ -233,6 +251,7 @@ if (DOTHESEARCH==1)
 	    FIRSTFLAG = Math.min(FIRSTFLAG,dashFLAG);
 	    FIRSTFLAG = Math.min(FIRSTFLAG,dskipFLAG);
 	    FIRSTFLAG = Math.min(FIRSTFLAG,dstopFLAG);
+	    FIRSTFLAG = Math.min(FIRSTFLAG,bombFLAG);
 
 	var endgp = portion.search(/\}/);
 	var curly = portion.search(/\\\}/);
