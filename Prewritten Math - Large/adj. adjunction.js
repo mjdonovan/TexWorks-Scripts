@@ -7,6 +7,13 @@
 // Script-Type: standalone
 // Context: TeXDocument
 // Shortcut: Alt+A,Alt+D,Alt+J
-    
-TW.target.insertText("\\[\\xymatrix@R=.3cm@C=2cm{\n\\calA  \\ar@<.6ex>[r]^{F}&\n\\calB  \\ar@<.4ex>[l]^{G}\\\\\n\%X \\ar@{|->}[r] & FX\\\\\n\%GY             & Y \\ar@{|->}[l]\n}\\]\n");
-TW.target.selectRange(TW.target.selectionStart-113, 5)
+
+var putAtStart="\\[\\xymatrix@R=.3cm@C=2cm{\n\u25D9\u25BA  \\ar@<.6ex>[r]^{\u06F8\u25BA}&\n\u25D9\u25BA  \\ar@<.4ex>[l]^{\u06F8}\\\\\n%X \\ar@{|->}[r] & FX\\\\\n%GY             & Y \\ar@{|->}[l]\n}\\]\n";
+
+if (TW.target.text[TW.target.selectionStart-1]!="\n")
+{
+	putAtStart="\n"+putAtStart;
+}
+
+TW.target.insertText(putAtStart);
+TW.target.selectRange(TW.target.selectionStart-108, 1)
