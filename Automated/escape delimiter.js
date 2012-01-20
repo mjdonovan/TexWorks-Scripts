@@ -33,6 +33,8 @@ FLAGS:
 
  SWAP for \DASH and continue				25CF
 
+ Alignat copy out flag					00A9
+
 Should be:
 continue = as if nothin happened
 skip     = to next flag
@@ -53,6 +55,7 @@ thin
 SES
 Adjunction
 alignat
+(big)oplus
 
 F buttons use all the flags.
 */
@@ -61,6 +64,43 @@ F buttons use all the flags.
 var DOTHESEARCH =1;
 var SKIPMODE = 0;
 var portion = TW.target.text;
+
+if (TW.target.selection=="\u00A9")
+{
+	DOTHESEARCH=0;
+	var SELSTART = TW.target.selectionStart;
+	var AATstring = "\\begin{alignat*}"
+	var LHSstring = "% Left hand side\n"
+	var RELstring = "% Relation\n"
+	var RHSstring = "% Right hand side\n"
+	var COMstring = "% Comment\n"
+
+	var AATstart=portion.lastIndexOf(AATstring,SELSTART)
+	var LHSstart=portion.lastIndexOf(LHSstring,SELSTART)
+	var RELstart=portion.lastIndexOf(RELstring,SELSTART)
+	var RHSstart=portion.lastIndexOf(RHSstring,SELSTART)
+	var COMstart=portion.lastIndexOf(COMstring,SELSTART)
+
+	if (AATstart < LHSstart && LHSstart < RELstart && RELstart < RHSstart && RHSstart < COMstart)
+	{
+		var LHS = portion.substring(LHSstart,RELstart);
+		var REL = portion.substring(RELstart,RHSstart);
+		var RHS = portion.substring(RHSstart,COMstart);
+		var COM = portion.substring(COMstart,SELSTART);
+		LHS=LHS.substring(LHSstring.length);
+		REL=REL.substring(RELstring.length);
+		RHS=RHS.substring(RHSstring.length);
+		COM=COM.substring(COMstring.length);
+
+	} else {null;}
+	
+	TW.target.selectRange(LHSstart,SELSTART-LHSstart);
+	TW.target.insertText(LHS+REL+RHS+COM+"\\\\\n"+LHSstring+LHS+RELstring+REL+
+				RHSstring+RHS+COMstring+"&\\qquad&\\text{(\u1FAE)}");
+	TW.target.selectRange(LHSstart+LHS.length+REL.length+RHS.length+COM.length+3+LHSstring.length,0);
+
+/*think of more descriptive comment line flags*/
+}
 
 if (TW.target.selection=="\u25CF")
 {
@@ -236,6 +276,8 @@ if (DOTHESEARCH==1)
 	var dstopFLAG= portion.search(/[\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F]/); 
 		//A flag for delete next n then stop
 	var bombFLAG=portion.search(/[\u1FAE\u1FAF]/);
+	var copyrightFLAG = portion.search(/\u00A9/);
+
 	
 	if (qFLAG<0)	 	{qFLAG=10000}
 	if (sFLAG<0) 		{sFLAG=10000}
@@ -244,6 +286,7 @@ if (DOTHESEARCH==1)
 	if (dstopFLAG<0) 	{dstopFLAG=10000}
 	if (commaFLAG<0)	{commaFLAG=10000}
 	if (bombFLAG<0)		{bombFLAG=10000}
+	if (copyrightFLAG<0)	{copyrightFLAG=10000}
 	if (SKIPPER<0) 		{SKIPPER=10000}
 
 	var FIRSTFLAG = Math.min(qFLAG,sFLAG);
@@ -252,6 +295,7 @@ if (DOTHESEARCH==1)
 	    FIRSTFLAG = Math.min(FIRSTFLAG,dskipFLAG);
 	    FIRSTFLAG = Math.min(FIRSTFLAG,dstopFLAG);
 	    FIRSTFLAG = Math.min(FIRSTFLAG,bombFLAG);
+	    FIRSTFLAG = Math.min(FIRSTFLAG,copyrightFLAG);
 
 	var endgp = portion.search(/\}/);
 	var curly = portion.search(/\\\}/);
