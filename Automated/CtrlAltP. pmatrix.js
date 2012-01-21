@@ -6,7 +6,7 @@
 // Date: 
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Shift+F6
+// Shortcut: Ctrl+Alt+Shift+P
 
 var textBlock =  TW.target.selection;
 var startingposition = TW.target.selectionStart;
