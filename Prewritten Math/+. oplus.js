@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  Direct sum
+// Title:  oplus
 // Description:  Inserts an oplus
 // Author:  Michael Donovan
 // Version: 

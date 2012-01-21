@@ -1,6 +1,6 @@
 // TeXworksScript
-// Title:  wedge
-// Description:  a wedge
+// Title:  wedge (big)
+// Description:  a big wedge
 // Author:  Michael Donovan
 // Version: 
 // Date: 
