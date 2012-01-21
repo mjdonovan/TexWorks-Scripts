@@ -12,7 +12,7 @@ var menutext="\n-----------MENU STARTS HERE-----------\nENVIRONMENTS:\n1:    pro
 
 var selec = TW.target.selection;
 var SCUR = TW.target.selectionStart;
-var menusearch = TW.target.text.search(menutext);
+var menusearch = TW.target.text.indexOf(menutext);
 
 if (selec.length==0)
 {
@@ -23,11 +23,12 @@ if (selec.length==0)
 		TW.target.selectRange(TW.target.selectionStart+1-menutext.length, 1)
 		TW.target.selectRange(TW.target.selectionStart, 0)
 	}
+	else
+	{
+		TW.target.selectRange(menusearch,menutext.length)
+		TW.target.insertText("");
+	}
 }
-/*else if (selec == menutext)
-{
-	TW.target.insertText("");
-}*/
 else
 {
 	null;
