@@ -1,12 +1,12 @@
 // TeXworksScript
-// Title:  0. Alignat
+// Title:  verbose alignat
 // Description: Starts an alignat*
 // Author:  Michael Donovan
 // Version: 0.2
 // Date: 2011-05-17
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Shift+Alt+0
+// Shortcut: 
     
 var putAtStart="\\begin{alignat*}{2}\n\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)}\u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)} \u1FAF\\\\\n\u00BF\u25BA&=\n\u00BF\u25BA%\n&\\qquad&\\text{(\u1FAE)}\n\\end{alignat*}\n"
 var startingplace = 20;
