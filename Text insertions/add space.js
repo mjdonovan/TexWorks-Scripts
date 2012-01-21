@@ -1,6 +1,6 @@
 // TeXworksScript
-// Title:  \,
-// Description:  inserts \,
+// Title:  whitespace
+// Description:  inserts whitespace
 // Author:  Michael Donovan
 // Version: 
 // Date: 
