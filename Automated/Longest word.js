@@ -6,7 +6,7 @@
 // Date: 2011-05-17
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Alt+Shift+W
+// Shortcut: Ctrl+Alt+Shift+W
     
 var portion = TW.target.text;
 var myOldString = portion;
