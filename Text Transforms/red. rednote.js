@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \textbf{}
+// Title:  \rednote{}
 // Description:  inserts \rednote{}
 // Author:  Michael Donovan
 // Version: 
