@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  xymatrix
+// Title:  xymatrix (2 by 2)
 // Description: inserts a freestyle commuting diagram
 // Author:  Michael Donovan
 // Version: 0.2
