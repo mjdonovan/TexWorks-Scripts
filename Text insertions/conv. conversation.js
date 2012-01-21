@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \CONVERSATION
+// Title:  CONVERSATION
 // Description:  inserts \CONVERSATION{}{}{}
 // Author:  Michael Donovan
 // Version: 

@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \noindent
+// Title:  noindent
 // Description: \noindent
 // Author:  Michael Donovan
 // Version: 0.2

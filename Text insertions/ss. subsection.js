@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  Subsection
+// Title:  subsection
 // Description: Starts a subsection
 // Author:  Michael Donovan
 // Version: 0.2

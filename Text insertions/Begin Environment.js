@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  Begin Environment
+// Title:  begin
 // Description: Starts a \begin{environment}
 // Author:  Michael Donovan
 // Version: 0.2

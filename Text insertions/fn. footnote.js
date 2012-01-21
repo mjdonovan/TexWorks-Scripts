@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \footnote{}
+// Title:  footnote
 // Description:  inserts \footnote{}
 // Author:  Michael Donovan
 // Version: 
