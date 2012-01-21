@@ -55,8 +55,7 @@ thin
 SES
 Adjunction
 alignat
-(big)oplus
-
+oplus, prod, coprod, sum, Wedge, Smash
 F buttons use all the flags.
 */
 
