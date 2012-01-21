@@ -6,7 +6,7 @@
 // Date: 
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Ctrl+Shift+-
+// Shortcut: Alt+DOWN
 
 var textBlock =  TW.target.selection;
 var putAtStart = "_{";
