@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  arrow builder
+// Title:  xyarrow builder
 // Description:  Builds an arrow
 // Author:  Michael Donovan
 // Version: 

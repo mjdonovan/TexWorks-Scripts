@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \pmatrix Builder
+// Title:  pmatrix
 // Description:  Builds a pmatrix environment
 // Author:  Michael Donovan
 // Version: 

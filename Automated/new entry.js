@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  New Entry
+// Title:  new entry
 // Description: Start a new entry
 // Author:  Michael Donovan
 // Version: 0.2

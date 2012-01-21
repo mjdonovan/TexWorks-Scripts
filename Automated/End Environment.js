@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  End Environment
+// Title:  end environment
 // Description: Completes a \begin{environment}
 // Author:  Paul Norman
 // Version: 0.2

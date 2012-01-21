@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  Find Longest Word
+// Title:  find longest word
 // Description: Highlights the Longest Word
 // Author:  Michael Donovan
 // Version: 0.2

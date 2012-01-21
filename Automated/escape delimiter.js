@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  Escape delimiter
+// Title:  escape delimiter
 // Description: move cursor to end of next delimiter
 // Author:  Michael Donovan
 // Version: 0.2

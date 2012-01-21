@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \begin\end machine
+// Title:  begin/end
 // Description:  Begins and ends an environment
 // Author:  Michael Donovan
 // Version: 

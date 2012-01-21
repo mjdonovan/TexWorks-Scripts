@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \xymatrix Builder
+// Title:  xymatrix builder
 // Description:  Builds an xymatrix environment
 // Author:  Michael Donovan
 // Version: 

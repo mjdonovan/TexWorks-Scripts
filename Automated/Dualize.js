@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  Dualize!
+// Title:  dualize diagram
 // Description: Highlights the next arrow to reverse, then reverses it.
 // Author:  Michael Donovan
 // Version: 0.2
