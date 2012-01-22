@@ -14,7 +14,7 @@ var portion = TW.target.text;
 var BuildStart=portion.search("\n\n@@@ xymatrix Builder START");
 
 var StartingText=
-"\n\n@@@ xymatrix Builder START\nStartStartStartStartStartStart\nA: (Height, Width)  @@A@@ 22\nB: Delimiters       @@B@@ \\[\nC: Row and Column   @@C@@ \nD: Row height       @@D@@ \nE: Column width     @@E@@ \nF: Uniform spacing  @@F@@ eg 1-4\nG: Inline?          @@G@@ \nH: vcenter?         @@H@@ \nI: Rotate           @@I@@ eg ur\nJ: Small objects?   @@J@@ \nK: Small labels?    @@K@@ \nL: Settings only?   @@L@@ \nEndEndEndEndEndEndEndEndEndEnd\nF=1 spaces equal   F=2 ignore entry sizes\nF=3 rows equal     F=4 columns equal\n@@@ xymatrix Builder END\n\n"
+"\n\n@@@ xymatrix Builder START\nStartStartStartStartStartStart\nA: (Height, Width)  @@A@@ 22\u25BA\nB: Delimiters       @@B@@ \u2590\\[\u258C\u25BA\nC: Row and Column   @@C@@ \u2590\u258C\u25BA\nD: Row height       @@D@@ \u2590\u258C\u25BA\nE: Column width     @@E@@ \u2590\u258C\u25BA\nF: Uniform spacing  @@F@@ \u2590eg 1-4\u258C\u25BA\nG: Inline?          @@G@@ \u2590\u258C\u25BA\nH: vcenter?         @@H@@ \u2590\u258C\u25BA\nI: Rotate           @@I@@ \u2590eg ur\u258C\u25BA\nJ: Small objects?   @@J@@ \u2590\u258C\u25BA\nK: Small labels?    @@K@@ \u2590\u258C\u25BA\nL: Settings only?   @@L@@ \u2590\u258C\nEndEndEndEndEndEndEndEndEndEnd\nF=1 spaces equal   F=2 ignore entry sizes\nF=3 rows equal     F=4 columns equal\n@@@ xymatrix Builder END\n\n"
 
 if (BuildStart<0)
 {
@@ -53,6 +53,19 @@ else
 	JPos=BuilderContents.substring(JPos+27,KPos);
 	KPos=BuilderContents.substring(KPos+27,LPos);
 	LPos=BuilderContents.substring(LPos+27,ENDS-2);
+
+	APos = APos.replace(/[\u2590\u258C\u25BA]/g,'');
+	BPos = BPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	CPos = CPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	DPos = DPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	EPos = EPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	FPos = FPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	GPos = GPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	HPos = HPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	IPos = IPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	JPos = JPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	KPos = KPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	LPos = LPos.replace(/[\u2590\u258C\u25BA]/g,'');
 
 	if (BPos.substring(0,2)=="eg") { BPos=""}
 	if (CPos.substring(0,2)=="eg") { CPos=""}

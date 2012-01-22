@@ -13,7 +13,8 @@ var startingposition = TW.target.selectionStart;
 var portion = TW.target.text;
 var BuildStart=portion.search("\n\n@@@ Arrow Builder START");
 
-var StartingText="\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nA: Direction    @@A@@ r\nB: Superscript  @@B@@ \nC: Subscript    @@C@@ \nD: Arrow type   @@D@@ \nE: Supscr pos   @@E@@ \nF: Subscr pos   @@F@@ \nG: Bend         @@G@@ eg ^1em\nH: Slide        @@H@@ eg +1ex\nI: Break Middle @@I@@ eg \\hole or x_1\nJ: Pass Under   @@J@@ eg [r][rr]\nW: 2-cell direc @@W@@ eg rr\nX: 2-arr label  @@X@@ eg a\nY: omit curves? @@Y@@ \nZ: Extra curve  @@Z@@ eg 5-9\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  none\n@@@ Arrow Builder END\n\n"
+var StartingText=
+"\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nA: Direction    @@A@@ r\u25BA\nB: Superscript  @@B@@ \u2590\u258C\u25BA\nC: Subscript    @@C@@ \u2590\u258C\u25BA\nD: Arrow type   @@D@@ \u2590\u258C\u25BA\nE: Supscr pos   @@E@@ \u2590\u258C\u25BA\nF: Subscr pos   @@F@@ \u2590\u258C\u25BA\nG: Bend         @@G@@ \u2590eg ^1em\u258C\u25BA\nH: Slide        @@H@@ \u2590eg +1ex\u258C\u25BA\nI: Break Middle @@I@@ \u2590eg \\hole or x_1\u258C\u25BA\nJ: Pass Under   @@J@@ \u2590eg\u25BA [r][rr]\u258C\u25BA\nW: 2-cell direc @@W@@ \u2590eg rr\u258C\u25BA\nX: 2-arr label  @@X@@ \u2590eg a\u258C\u25BA\nY: omit curves? @@Y@@ \u2590\u258C\u25BA\nZ: Extra curve  @@Z@@ \u2590eg 5-9\u258C\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  none\n@@@ Arrow Builder END\n\n"
 
 //THE BIG IF STATEMENT -  
 if (BuildStart<0)
@@ -58,6 +59,22 @@ else
 	XPos=BuilderContents.substring(XPos+23,YPos);
 	YPos=BuilderContents.substring(YPos+23,ZPos);
 	ZPos=BuilderContents.substring(ZPos+23,ENDS);
+
+
+	APos = APos.replace(/[\u2590\u258C\u25BA]/g,'');
+	BPos = BPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	CPos = CPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	DPos = DPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	EPos = EPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	FPos = FPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	GPos = GPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	HPos = HPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	IPos = IPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	JPos = JPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	WPos = WPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	XPos = XPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	YPos = YPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	ZPos = ZPos.replace(/[\u2590\u258C\u25BA]/g,'');
 
 	if (APos.substring(0,2)=="eg") { APos=""}
 	if (BPos.substring(0,2)=="eg") { BPos=""}
