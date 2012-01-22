@@ -336,7 +336,11 @@ if (DOTHESEARCH==1)
 	rangl+=7;
 	verti+=1;
 	VERTI+=2;
-	newln+=1;
+//	newln+=1; used to be like this.
+	if (newln==0)
+	{
+		newln+=1;
+	}
 	amper+=1;
 	
 	icomm+=1;
