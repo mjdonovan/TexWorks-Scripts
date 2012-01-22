@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+Shift+H
     
-TW.target.insertText("\u1F4A\u25BA\\widetilde{H}_{\u06F7\u25BA}^{\u06F8\u25BA}(\u25CF\u25BA;\u03E2)");
-TW.target.selectRange(TW.target.selectionStart-31, 01)
+TW.target.insertText("\u1F49\\widetilde{H}_{\u06F7\u25BA}^{\u06F8\u25BA}(\u25CF\u25BA;\u03E2)");
+TW.target.selectRange(TW.target.selectionStart-30, 01)
