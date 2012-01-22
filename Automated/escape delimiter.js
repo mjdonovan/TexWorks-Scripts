@@ -8,6 +8,61 @@
 // Context: TeXDocument
 // Shortcut: Esc
 
+function CharFlagSkip(portion,doChar)
+{
+	var DistToChar = 1000000;
+	var DistToSkip = portion.search(/\u25BA/); 
+	if (DistToSkip<0) {DistToSkip=1000000}
+
+	var DistToFlag  = portion.search(/[\u03E2\u25CF\u00BF\u25D9\u06F7\u06F8\u0416\u1F40\u1F41\u1F42\u1F43\u1F44\u1F45\u1F46\u1F47\u1F48\u1F49\u1F4A\u1F4B\u1F4C\u1F4D\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F\u1FAE\u1FAF\u00A9]/);
+	if (DistToFlag<0) {DistToFlag=1000000}
+
+	if (doChar>0 || DistToSkip>=DistToFlag)
+	{
+		var endgp = portion.search(/\}/);
+		var curly = portion.search(/\\\}/);
+		var round = portion.search(/\)/);
+		var squar = portion.search(/\]/);
+		var endmA = portion.search(/\\\]/);
+		var endmB = portion.search(/\$/);
+		var rangl = portion.search(/\\rangle/);
+		var verti = portion.search(/\|/);
+		var VERTI = portion.search(/\\\|/);
+		var newln = portion.search(/\n/);
+		var amper = portion.search(/&/);
+		var icoms = portion.search(/''/);
+		var icomm = portion.search(/'/);
+		
+		if (endgp>-1) {endgp+=1;} else {endgp=1000000;}
+		if (curly>-1) {curly+=2;} else {curly=1000000;}
+		if (round>-1) {round+=1;} else {round=1000000;}
+		if (squar>-1) {squar+=1;} else {squar=1000000;}
+		if (endmA>-1) {endmA+=2;} else {endmA=1000000;}
+		if (endmB>-1) {endmB+=1;} else {endmB=1000000;}
+		if (rangl>-1) {rangl+=7;} else {rangl=1000000;}
+		if (verti>-1) {verti+=1;} else {verti=1000000;}
+		if (VERTI>-1) {VERTI+=2;} else {VERTI=1000000;}
+		if (amper>-1) {amper+=1;} else {amper=1000000;}
+// pauses at end of line
+		if (newln==0) {newln+=1;}
+		if (newln==-1){newln=1000000;}
+// doesn't confuse ' and ''
+		if (icoms == icomm) {icomm=-1}
+		if (icomm>-1) {icomm+=1;} else {icomm=1000000;}
+		if (icoms>-1) {icoms+=2;} else {icoms=1000000;}
+	
+		DistToChar = Math.min(endgp,curly,round,squar,endmA,
+			endmB,rangl,verti,VERTI,newln,
+			amper,icomm,icoms);
+//		if (DistToChar<0 || DistToChar>1000000) {DistToChar=1000000}
+	}
+
+	return Array(
+		DistToChar,
+		DistToFlag,
+		DistToSkip);
+}
+
 /*
 SKIPPER: 						25BA
 
@@ -110,7 +165,7 @@ if (TW.target.selection=="\u03E2")
 {
 	TW.target.selectRange(Math.max(TW.target.selectionStart-1,0),Math.min(2,TW.target.text.length-TW.target.selectionStart));
 	TW.target.insertText("");
-	SKIPMODE=1;
+//	SKIPMODE=1; I don't think I want this here.
 }
 
 
@@ -255,131 +310,71 @@ else if (TW.target.selection=="\u0416")
 		portion = TW.target.text;
 	}
 }
+
+
+
+
 if (DOTHESEARCH==1)
 {
-	var portion = TW.target.text.substr(TW.target.selectionStart)
-	
-	var SKIPPER = portion.search(/\u25BA/); 
-		//A flag to say ''skip to next flag''
-
-	var commaFLAG = portion.search(/\u03E2/);
-		//deletes previous character and itself
-	var dashFLAG = portion.search(/\u25CF/);
-		//replaces itself with \DASH
-	var qFLAG  = portion.search(/[\u00BF\u25D9]/);  
-		//One character data entry flag
-	var sFLAG = portion.search(/[\u06F7\u06F8\u0416]/); 
-		//A flag for cancellable sub and superscripts living in _{} or _-{}
-	var dskipFLAG= portion.search(/[\u1F40\u1F41\u1F42\u1F43\u1F44\u1F45\u1F46\u1F47\u1F48\u1F49\u1F4A\u1F4B\u1F4C\u1F4D]/); 
-		//A flag for delete next n then skip
-	var dstopFLAG= portion.search(/[\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F]/); 
-		//A flag for delete next n then stop
-	var bombFLAG=portion.search(/[\u1FAE\u1FAF]/);
-	var copyrightFLAG = portion.search(/\u00A9/);
-
-	
-	if (qFLAG<0)	 	{qFLAG=10000}
-	if (sFLAG<0) 		{sFLAG=10000}
-	if (dashFLAG<0) 	{dashFLAG=10000}
-	if (dskipFLAG<0) 	{dskipFLAG=10000}
-	if (dstopFLAG<0) 	{dstopFLAG=10000}
-	if (commaFLAG<0)	{commaFLAG=10000}
-	if (bombFLAG<0)		{bombFLAG=10000}
-	if (copyrightFLAG<0)	{copyrightFLAG=10000}
-	if (SKIPPER<0) 		{SKIPPER=10000}
-
-	var FIRSTFLAG = Math.min(qFLAG,sFLAG);
-	    FIRSTFLAG = Math.min(FIRSTFLAG,commaFLAG);
-	    FIRSTFLAG = Math.min(FIRSTFLAG,dashFLAG);
-	    FIRSTFLAG = Math.min(FIRSTFLAG,dskipFLAG);
-	    FIRSTFLAG = Math.min(FIRSTFLAG,dstopFLAG);
-	    FIRSTFLAG = Math.min(FIRSTFLAG,bombFLAG);
-	    FIRSTFLAG = Math.min(FIRSTFLAG,copyrightFLAG);
-
-	var endgp = portion.search(/\}/);
-	var curly = portion.search(/\\\}/);
-	var round = portion.search(/\)/);
-	var squar = portion.search(/\]/);
-	var endmA = portion.search(/\\\]/);
-	var endmB = portion.search(/\$/);
-	var rangl = portion.search(/\\rangle/);
-	var verti = portion.search(/\|/);
-	var VERTI = portion.search(/\\\|/);
-	var newln = portion.search(/\n/);
-	var amper = portion.search(/&/);
-	
-	var icoms = portion.search(/''/);
-	var icomm = portion.search(/'/);
-	
-	if (endgp<0) {endgp=10000}
-	if (curly<0) {curly=10000}
-	if (round<0) {round=10000}
-	if (squar<0) {squar=10000}
-	if (endmA<0) {endmA=10000}
-	if (endmB<0) {endmB=10000}
-	if (rangl<0) {rangl=10000}
-	if (verti<0) {verti=10000}
-	if (VERTI<0) {VERTI=10000}
-	if (newln<0) {newln=10000}
-	if (amper<0) {amper=10000}
-	
-	if (icoms == icomm) {icomm=-1}
-	if (icoms<0) {icoms=10000}
-	if (icomm<0) {icomm=10000}
-	
-	endgp+=1;
-	curly+=2;
-	round+=1;
-	squar+=1;
-	endmA+=2;
-	endmB+=1;
-	rangl+=7;
-	verti+=1;
-	VERTI+=2;
-//	newln+=1; used to be like this.
-	if (newln==0)
-	{
-		newln+=1;
-	}
-	amper+=1;
-	
-	icomm+=1;
-	icoms+=2;
-	var UnimportantDIST=Math.min(endmA,
-	              newln,
-	              amper,icomm,icoms);
-	
-	var DIST=Math.min(endgp,curly,round,squar,endmA,
-	              endmB,rangl,verti,VERTI,newln,
-	              amper,icomm,icoms);
 	var selst = TW.target.selectionStart;
-
-// INTENDED BEHAVIOR: If the next thing you see is one of: an endline, inverted commas, an ampersand,  a $, then skip directly to the next flag character.
-	var skippersdeleted=0;
-	if (SKIPPER<DIST && SKIPPER<FIRSTFLAG && SKIPPER!=10000)
+	portion = TW.target.text.substr(selst);
+	var CFS = CharFlagSkip(portion,1);
+	if (SKIPMODE==1 || CFS[2]<CFS[0] && CFS[2]<CFS[1])
 	{
-		TW.target.selectRange(selst+SKIPPER, 1);
-		TW.target.insertText("");
-		SKIPMODE=1;
-		skippersdeleted=1;
-	}
-	if ((SKIPMODE == 1 || UnimportantDIST==DIST ||FIRSTFLAG<DIST) && FIRSTFLAG!=10000)
-	{
-		if (SKIPMODE == 1)
+		var DONTLOOP = 0;
+		while (CFS[2]!=1000000 && CFS[2]<CFS[1] && DONTLOOP<100)
 		{
-			 TW.target.selectRange(selst+FIRSTFLAG-skippersdeleted, 1);
+			selst=selst+CFS[2];
+			TW.target.selectRange(selst,1);
+			TW.target.insertText("");
+
+			portion = TW.target.text.substr(selst);
+			CFS = CharFlagSkip(portion,0);
+			DONTLOOP++;
+		}
+		if (DONTLOOP>99) {TW.target.insertText("LOOPED FOR AGES");}
+		if (CFS[1]<1000000)
+		{
+			selst=selst+CFS[1];
+			TW.target.selectRange(selst,1);
 		}
 		else
 		{
-			 TW.target.selectRange(selst+FIRSTFLAG, 1);
+			null;
 		}
 	}
-	else if (SKIPMODE == 0)
+	else if (CFS[0]<1000000 && CFS[0]<CFS[1])
 	{
-		if (DIST>10000) {DIST=0;}
-		TW.target.selectRange(TW.target.selectionStart+DIST, 0);
+		selst=selst+CFS[0];
+		TW.target.selectRange(selst,0);	
 	}
-	if (SKIPMODE == 1 && FIRSTFLAG==10000)
-	{ null; }
+	else if (CFS[1]<1000000 && CFS[1]<=CFS[0])
+	{
+		selst=selst+CFS[1];
+		TW.target.selectRange(selst,1);	
+	}
+	else
+	{
+		null;
+	}
 }
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
