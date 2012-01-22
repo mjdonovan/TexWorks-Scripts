@@ -14,7 +14,7 @@ function CharFlagSkip(portion,doChar)
 	var DistToSkip = portion.search(/\u25BA/); 
 	if (DistToSkip<0) {DistToSkip=1000000}
 
-	var DistToFlag  = portion.search(/[\u03E2\u25CF\u00BF\u25D9\u06F7\u06F8\u0416\u1F40\u1F41\u1F42\u1F43\u1F44\u1F45\u1F46\u1F47\u1F48\u1F49\u1F4A\u1F4B\u1F4C\u1F4D\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F\u1FAE\u1FAF\u00A9]/);
+	var DistToFlag  = portion.search(/[\u03E2\u25CF\u00BF\u25D9\u06F7\u06F8\u0416\u1F40\u1F41\u1F42\u1F43\u1F44\u1F45\u1F46\u1F47\u1F48\u1F49\u1F4A\u1F4B\u1F4C\u1F4D\u1F80\u1F81\u1F82\u1F83\u1F84\u1F85\u1F86\u1F87\u1F88\u1F89\u1F8A\u1F8B\u1F8C\u1F8D\u1F8E\u1F8F\u1FAE\u1FAF\u00A9\u258C\u2590]/);
 	if (DistToFlag<0) {DistToFlag=1000000}
 
 	if (doChar>0 || DistToSkip>=DistToFlag)
@@ -64,6 +64,9 @@ function CharFlagSkip(portion,doChar)
 }
 
 /*
+highlighter pair: 					2590 then 258C
+Whatever is between them when they are skipped to gets highlighted
+
 SKIPPER: 						25BA
 
 FLAGS:
@@ -337,6 +340,22 @@ if (DOTHESEARCH==1)
 		{
 			selst=selst+CFS[1];
 			TW.target.selectRange(selst,1);
+
+//REPEATED CODE
+if (TW.target.selection == "\u2590")
+{
+	selst = TW.target.selectionStart;
+	portion = TW.target.text.substr(selst);
+	var DD = portion.search(/\u258C/);
+	if (DD!=-1)
+	{
+		TW.target.selectRange(selst,DD+1);
+TW.target.insertText(TW.target.selection.substr(1,TW.target.selection.length-2));
+		TW.target.selectRange(selst,DD-1);
+	}
+}
+//END REPEATED CODE
+
 		}
 		else
 		{
@@ -351,7 +370,23 @@ if (DOTHESEARCH==1)
 	else if (CFS[1]<1000000 && CFS[1]<=CFS[0])
 	{
 		selst=selst+CFS[1];
-		TW.target.selectRange(selst,1);	
+		TW.target.selectRange(selst,1);
+
+//REPEATED CODE
+if (TW.target.selection == "\u2590")
+{
+	selst = TW.target.selectionStart;
+	portion = TW.target.text.substr(selst);
+	var DD = portion.search(/\u258C/);
+	if (DD!=-1)
+	{
+		TW.target.selectRange(selst,DD+1);
+TW.target.insertText(TW.target.selection.substr(1,TW.target.selection.length-2));
+		TW.target.selectRange(selst,DD-1);
+	}
+}
+//END REPEATED CODE
+
 	}
 	else
 	{
