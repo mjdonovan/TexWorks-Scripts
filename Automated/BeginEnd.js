@@ -14,7 +14,7 @@ var portion = TW.target.text;
 var BuildStart=portion.search("\n\n@@@ environment Builder START");
 
 var StartingText=
-"\n\n@@@ environment Builder START\nStartStartStartStartStartStart\nB: Name             @@L@@ \nEndEndEndEndEndEndEndEndEndEnd\n@@@ environment Builder END\n\n"
+"\n\n@@@ environment Builder START\nStartStartStartStartStartStart\nB: Name             @@B@@ \nEndEndEndEndEndEndEndEndEndEnd\n@@@ environment Builder END\n\n"
 
 if (BuildStart<0)
 {
@@ -28,7 +28,7 @@ else
 	var BuilderContents = portion.substring(BuildStart,BuildEnd);
 	TW.target.selectRange(BuildStart, BuildEnd-BuildStart);
 
-	var BPos=BuilderContents.search("@@L@@ ")+6-27;
+	var BPos=BuilderContents.search("@@B@@ ")+6-27;
 	var ENDS=BuilderContents.search("EndEndEndEndEndEndEndEndEndEnd")+1;
 
 	BPos=BuilderContents.substring(BPos+27,ENDS-2);
