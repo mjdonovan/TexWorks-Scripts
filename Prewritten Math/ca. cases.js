@@ -8,7 +8,8 @@
 // Context: TeXDocument
 // Shortcut: Alt+C,Alt+A
     
-var StartingText="\\begin{cases}\n\u00BF\u25BA,&\\textup{if }\u00BF\u25BA;\\\\\n\u00BF\u25BA,&\\textup{if }\u00BF.\n%\\\\,&\\textup{if }\n\\end{cases}\n"
+var StartingText=
+"\\begin{cases}\n\u00BF\u25BA,&\\textup{if \u00BF\u25BA}\u00BF\u25BA;\\\\\n\u00BF\u25BA,&\\textup{\u2590if \u258C\u25BA}\u00BF.\n%\\\\,&\\textup{if }\n\\end{cases}\n"
 	
 TW.target.insertText(StartingText);
 TW.target.selectRange(TW.target.selectionStart-1, 1);
