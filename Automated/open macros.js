@@ -6,7 +6,7 @@
 // Date: 2011-05-17
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Alt+Shift+M
+// Shortcut: 
     
 //TW.target.insertText("currentFileName");
 //TW.target.insertText(TW.target.fileName);
