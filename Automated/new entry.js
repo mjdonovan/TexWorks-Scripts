@@ -6,7 +6,7 @@
 // Date: 2011-05-17
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Alt+N,Alt+E,Alt+W
+// Shortcut: Alt+Shift+N,Alt+Shift+E,Alt+Shift+W
 
 
  var portion = TW.target.text;
