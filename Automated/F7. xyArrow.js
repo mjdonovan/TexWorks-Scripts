@@ -180,5 +180,5 @@ else
 			{ARROWTEXT = ARROWTEXT + "\""+ MPos + "\"";}
 	}
 }
-	TW.target.insertText(ARROWTEXT);
+	TW.target.insertText(ARROWTEXT+"\n");
 }
