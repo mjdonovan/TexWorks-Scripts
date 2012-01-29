@@ -184,9 +184,17 @@ else
 		{
 			for (C=1;C<=numC;C++)
 			{
+				if (C!=1 || R!=1)
+				{
+					THELINES=THELINES+"\u2590\u258C";
+				}
+				if (C!=numC || R!=numR)
+				{
+					THELINES=THELINES+"\u25BA";
+				}
 				if (C!=numC)
 				{
-				THELINES=THELINES+"&%r"+R+"c"+C+"\n"
+					THELINES=THELINES+"&%r"+R+"c"+C+"\n"
 				}
 				else
 				{
