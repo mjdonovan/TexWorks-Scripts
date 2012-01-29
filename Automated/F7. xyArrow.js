@@ -19,7 +19,6 @@ var StartingText=
 //THE BIG IF STATEMENT -  
 if (BuildStart<0)
 {
-	
 	TW.target.insertText(StartingText);
 	TW.target.selectRange(TW.target.selectionStart-1, 1);
 	TW.target.selectRange(TW.target.selectionStart-StartingText.length+1+79, 1);
