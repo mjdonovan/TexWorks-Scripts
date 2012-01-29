@@ -6,6 +6,6 @@
 // Date: 
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Ctrl+Alt+Shift+-
+// Shortcut: Alt+-
     
 TW.target.insertText("\\DASH ");
