@@ -184,6 +184,5 @@ else
 	{
 		ARROWTEXT = APos;
 	}
-TW.target.insertText(BPos+CPos+DPos+EPos+FPos+GPos+HPos+IPos+JPos+KPos+LPos+MPos+NPos+OPos+WPos+XPos+YPos+ZPos)
 	TW.target.insertText(ARROWTEXT+"\n");
 }
