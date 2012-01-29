@@ -83,7 +83,7 @@ else
 	JPos = JPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	KPos = KPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	LPos = LPos.replace(/[\u2590\u258C\u25BA]/g,'');
-	MPOs = MPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	MPos = MPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	NPos = NPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	OPos = OPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	WPos = WPos.replace(/[\u2590\u258C\u25BA]/g,'');
@@ -180,5 +180,11 @@ else
 			{ARROWTEXT = ARROWTEXT + "\""+ MPos + "\"";}
 	}
 }
+// If you only change the first entry, then it'll be taken as an object, not an arrow!
+	if(BPos+CPos+DPos+EPos+FPos+GPos+HPos+IPos+JPos+KPos+LPos+MPos+NPos+OPos+WPos+XPos+YPos+ZPos == "" && APos.replace(/[udlr]/g,'')!="")
+	{
+		ARROWTEXT = APos;
+	}
+TW.target.insertText(BPos+CPos+DPos+EPos+FPos+GPos+HPos+IPos+JPos+KPos+LPos+MPos+NPos+OPos+WPos+XPos+YPos+ZPos)
 	TW.target.insertText(ARROWTEXT+"\n");
 }
