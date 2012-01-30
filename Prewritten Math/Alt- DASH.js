@@ -1,6 +1,6 @@
 // TeXworksScript
-// Title:  \cdots
-// Description:  inserts \cdots
+// Title:  DASH
+// Description:  inserts \DASH
 // Author:  Michael Donovan
 // Version: 
 // Date: 

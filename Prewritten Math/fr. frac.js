@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \frac{}{}
+// Title:  fraction
 // Description: inserts \frac{}{}
 // Author:  Michael Donovan
 // Version: 0.2

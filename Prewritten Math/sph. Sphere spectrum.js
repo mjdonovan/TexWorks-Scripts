@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \mathbb{S}
+// Title:  Sphere spectrum
 // Description:  inserts \mathbb{S}
 // Author:  Michael Donovan
 // Version: 

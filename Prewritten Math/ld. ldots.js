@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  ,\ldots,
+// Title:  ldots
 // Description:  inserts ,\ldots,
 // Author:  Michael Donovan
 // Version: 

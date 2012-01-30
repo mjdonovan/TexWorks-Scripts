@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \overset{}{\to}
+// Title:  overset{}{\to}
 // Description: \overset{}{\to}
 // Author:  Michael Donovan
 // Version: 0.2

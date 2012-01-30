@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \infty
+// Title:  infty
 // Description: Inserts \infty
 // Author:  Michael Donovan
 // Version: 0.2

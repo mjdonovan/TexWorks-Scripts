@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  \cdots
+// Title:  cdots
 // Description:  inserts \cdots
 // Author:  Michael Donovan
 // Version: 
