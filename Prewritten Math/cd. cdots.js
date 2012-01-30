@@ -8,4 +8,4 @@
 // Context: TeXDocument
 // Shortcut: Alt+C,Alt+D
     
-TW.target.insertText("\\cdots");
+TW.target.insertText("\\cdots ");
