@@ -1,6 +1,6 @@
 // TeXworksScript
-// Title:  Pause. Show menu
-// Description: Shows the menu, highlighted
+// Title:  Menu
+// Description: Shows then deletes the menu
 // Author:  Michael Donovan
 // Version: 0.2
 // Date: 2011-05-17
@@ -9,7 +9,7 @@
 // Shortcut: Ctrl+Alt+Shift+M
   
 var menutext=
-"\n-----------MENU STARTS HERE-----------\nENVIRONMENTS:\n1:    proof         6:    definition    \n2:    proposition   7:    lemma         \n3:    theorem       8:    itemise       \n4:    corollary     9:    enumerate     \n5:    example       0:    alignat       \nclai: claim         shad: shaded\nfn:   footnote      ss:   subsection\npara: paragraph     SS:   subsubsection\n\nIN MATH MODE:\nsum:  Sum           prod: product\ncopr: coproduct     +:    direct sum\nsm/SM:smash         we/WE:wedge\nH:    (co)Homology  pi:   homotopy\nca:   cases         fr:   fraction\nto:   rightarrow    der:  partial deriv\nF3:   textup\\,      F4:   mathsf\nBifunctors:   ext, hom, ten, Tor\nAbbrevs:      inf, inv, ld, cd, sph, op\nDecoration:   uparr, dnarr, ul, ol, wt\n\nF BUTTONS:\nF1:  $$     F2:  \\[\\]   Pause: {}\nF10: \\{\\}   F11: []     F12: ()\n\nBUILDERS:\nF5: Begin and End   CtrAlt+P: pmatrix\nCtrAlt+X: xymatrix  Insert:   xyarrow    \n\nMATH or TEXT:\nFonts:      bf, up, em, sf, it, sc, red\nSpacing:    ->, ind, noin, thin, rais, MASH\n\nABBREVIATIONS IN TEXT:\nAbbrev: resp, ie, aka, for, i1, icat\n------------MENU ENDS HERE------------\n"
+"\n-----------MENU STARTS HERE-----------\nENVIRONMENTS:\n1:    proof         6:    definition    \n2:    proposition   7:    lemma         \n3:    theorem       8:    itemise       \n4:    corollary     9:    enumerate     \n5:    example       0:    alignat       \nclai: claim         shad: shaded\nfn:   footnote      ss:   subsection\npara: paragraph     SS:   subsubsection\n\nIN MATH MODE:\nsum:  Sum           prod: product\ncopr: coproduct     +:    direct sum\nsm/SM:smash         we/WE:wedge\n*:    times         o*:   otimes\nH:    (co)Homology  pi:   homotopy\nca:   cases         fr:   fraction\nto:   rightarrow    der:  partial deriv\nF3:   textup\\,      F4:   mathsf\nBifunctors:   ext, hom, ten, Tor\nAbbrevs:      inf, inv, ld, cd, sph, op, -\nDecoration:   ul, ol, wt\n\nF BUTTONS:\nF1:  $$     F2:  \\[\\]   Pause: {}\nF10: \\{\\}   F11: []     F12: ()\n\nBUILDERS:\nF5: Begin and End    CtrAltP: pmatrix\nCtlAltX: xymatrix    Insert:  xyarrow\nCtlAltS: strip flags CtlAltR: xydualise\n\nMATH or TEXT:\nFonts:      bf, up, em, sf, it, sc, red\nSpacing:    ->, ind, noin, thin, rais, MASH\n\nABBREVIATIONS IN TEXT:\nAbbrev: resp, ie, aka, for, wher, i1, icat\n------------MENU ENDS HERE------------\n"
 
 var selec = TW.target.selection;
 var SCUR = TW.target.selectionStart;
