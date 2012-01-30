@@ -6,7 +6,7 @@
 // Date: 2011-05-17
 // Script-Type: standalone
 // Context: TeXDocument
-// Shortcut: Alt+Shift+8
+// Shortcut: Ctrl+8
     
 TW.target.insertText("\\begin{itemize}\\squishlist\n\\item \n\\end{itemize}");
 TW.target.selectRange(TW.target.selectionStart-14, 0)
