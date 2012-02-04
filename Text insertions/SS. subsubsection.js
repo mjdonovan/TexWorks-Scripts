@@ -7,6 +7,22 @@
 // Script-Type: standalone
 // Context: TeXDocument
 // Shortcut: Alt+Shift+S, Alt+Shift+S
-    
-TW.target.insertText("\\subsubsection*{}\n");
+
+var portion = TW.target.text;
+var SS=portion.search("%%%USINGsubsectionNUMBERS");
+var SSS=portion.search("%%%USINGsubsubsectionNUMBERS");
+var PAR=portion.search("%%%USINGparagraphNUMBERS");
+
+if (SSS>-1 || PAR>-1)
+{
+	TW.target.insertText("\\subsubsection{}\n");
+} else
+{
+	TW.target.insertText("\\subsubsection*{}\n");
+}
 TW.target.selectRange(TW.target.selectionStart-2, 0)
+
+
+/*
+Type %%%USINGxNUMBERS to use numbers for type x and all supertypes.
+*/

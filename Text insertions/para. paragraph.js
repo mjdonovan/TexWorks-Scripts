@@ -8,5 +8,21 @@
 // Context: TeXDocument
 // Shortcut: Alt+P,Alt+A,Alt+R,Alt+A
     
-TW.target.insertText("\\paragraph*{}\n");
+var portion = TW.target.text;
+var SS=portion.search("%%%USINGsubsectionNUMBERS");
+var SSS=portion.search("%%%USINGsubsubsectionNUMBERS");
+var PAR=portion.search("%%%USINGparagraphNUMBERS");
+
+if (PAR>-1)
+{
+	TW.target.insertText("\\paragraph{}\n");
+} else
+{
+	TW.target.insertText("\\paragraph*{}\n");
+}
 TW.target.selectRange(TW.target.selectionStart-2, 0)
+
+
+/*
+Type %%%USINGxNUMBERS to use numbers for type x and all supertypes.
+*/
