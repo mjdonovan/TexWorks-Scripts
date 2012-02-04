@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+T, Alt+O
     
-TW.target.insertText("\\overset{}{\\to}");
-TW.target.selectRange(TW.target.selectionStart-6, 0)
+TW.target.insertText("\\overset{\u25BA}{\\to}\u2590\u258C");
+TW.target.selectRange(TW.target.selectionStart-9, 0)

@@ -116,6 +116,8 @@ alignat
 oplus, prod, coprod, sum, Wedge, Smash
 F buttons use all the flags.
 Strip flags
+to
+functiondef
 */
 
 
