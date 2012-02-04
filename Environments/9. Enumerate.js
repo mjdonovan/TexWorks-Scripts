@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+9
     
-TW.target.insertText("\\begin{enumerate}\\squishlist\n\\item \n\\end{enumerate}");
+TW.target.insertText("\\begin{enumerate}\\squishlist\n\\setlength{\\parindent}{.25in}\n\\item \n\\end{enumerate}");
 TW.target.selectRange(TW.target.selectionStart-16, 0)

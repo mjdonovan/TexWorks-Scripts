@@ -8,5 +8,5 @@
 // Context: TeXDocument
 // Shortcut: Alt+8
     
-TW.target.insertText("\\begin{itemise}\n\\item \n\\end{itemise}");
+TW.target.insertText("\\begin{itemise}\n\\setlength{\\parindent}{.25in}\n\\item \n\\end{itemise}");
 TW.target.selectRange(TW.target.selectionStart-14, 0)
