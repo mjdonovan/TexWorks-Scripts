@@ -8,4 +8,13 @@
 // Context: TeXDocument
 // Shortcut: Alt+N,Alt+O,Alt+I,Alt+N
     
-TW.target.insertText("\\noindent ");
+var startingposition = TW.target.selectionStart;
+var portion = TW.target.text;
+var lastNewLn = (portion.substr(0,startingposition)).lastIndexOf("\n")+1;
+if (portion.substring(lastNewLn,lastNewLn+10)!="\\noindent ")
+{
+	TW.target.selectRange(lastNewLn,0);
+	TW.target.insertText("\\noindent ");
+	TW.target.selectRange(startingposition+10,0);
+}
+else { null; }
