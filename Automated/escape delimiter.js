@@ -156,9 +156,10 @@ if (TW.target.selection=="\u00A9")
 	} else {null;}
 	
 	TW.target.selectRange(LHSstart,SELSTART-LHSstart);
-	TW.target.insertText(LHS+REL+RHS+COM+"\\\\\n"+LHSstring+LHS+RELstring+REL+
-				RHSstring+RHS+COMstring+"&\\qquad&\\text{(\u1FAE)}");
-	TW.target.selectRange(LHSstart+LHS.length+REL.length+RHS.length+COM.length+3+LHSstring.length,0);
+	TW.target.insertText(LHS+REL+RHS+COM+"\\\\\n"+LHSstring+LHS+"\u25BA"+RELstring+REL+
+				RHSstring+"\u2590"+RHS+"\u258C\u25BA"
+                               +COMstring+"&\\qquad&\\text{(\u1FAE)}");
+	TW.target.selectRange(LHSstart+LHS.length+REL.length+RHS.length+COM.length+3+LHSstring.length,LHS.length);
 
 /*think of more descriptive comment line flags*/
 }
