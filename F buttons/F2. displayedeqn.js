@@ -25,3 +25,4 @@ TW.target.insertText(INSERTME);
 if (textBlock.length==0) {
      TW.target.selectRange(TW.target.selectionStart-moveBackIfEmpty, 0);
 }
+
