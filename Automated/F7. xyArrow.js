@@ -163,7 +163,7 @@ else
 		if (EPos.length>0) {ARROWTEXT = ARROWTEXT + "("+ EPos + ")";}
 		ARROWTEXT = ARROWTEXT + "{"+ BPos + "}";
 		if (KPos.length>0)
-			{ARROWTEXT = ARROWTEXT + "\""+ KPos + "\"";}
+			{ARROWTEXT = ARROWTEXT + "=\""+ KPos + "\"";}
 	}
 	if (CPos.length>0 || FPos.length>0 || LPos.length>0)
 	{
