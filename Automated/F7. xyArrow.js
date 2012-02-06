@@ -315,16 +315,26 @@ else
 	if (YPos.substring(0,2)=="eg") { YPos=""}
 	if (ZPos.substring(0,2)=="eg") { ZPos=""}
 
-	if (DPos=="1") {DPos="->>"}
-	if (DPos=="2") {DPos="^{(}->"}
-	if (DPos=="3") {DPos=">->"}
-	if (DPos=="4") {DPos="|->"}
-	if (DPos=="5") {DPos="-->"}
-	if (DPos=="6") {DPos="..>"}
-	if (DPos=="7") {DPos="~>"}
-	if (DPos=="8") {DPos="="}
-	if (DPos=="9") {DPos="=>"}
-	if (DPos=="0") {DPos="BLANKME"}
+	if (DPos=="1" || DPos.substr(0,3)=="epi" || DPos.substr(0,3)=="fib" || DPos.substr(0,3)=="sur")
+	        {DPos="->>"}
+	if (DPos=="2" || DPos.substr(0,3)=="mon" || DPos.substr(0,3)=="cof" || DPos.substr(0,3)=="inj")
+		{DPos="^{(}->"}
+	if (DPos=="3")
+		{DPos=">->"} 
+	if (DPos=="4" || DPos.substr(0,3)=="map")
+		{DPos="|->"}
+	if (DPos=="5" || DPos.substr(0,3)=="das")
+		{DPos="-->"}
+	if (DPos=="6" || DPos.substr(0,3)=="dot")
+		{DPos="..>"}
+	if (DPos=="7" || DPos.substr(0,3)=="wav")
+		{DPos="~>"}
+	if (DPos=="8" || DPos.substr(0,3)=="equ" || DPos.substr(0,2)=="id")
+		{DPos="="}
+	if (DPos=="9" || DPos.substr(0,3)=="nat" || DPos=="nt")
+		{DPos="=>"}
+	if (DPos=="0" || DPos.substr(0,3)=="non" || DPos.substr(0,3)=="emp" || DPos.substr(0,3)=="bla")
+		{DPos="BLANKME"}//this is a flag for later
 
 
 	var ARROWTEXT = "\\ar"
