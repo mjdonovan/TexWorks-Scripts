@@ -8,16 +8,19 @@
 // Context: TeXDocument
 // Shortcut: Alt+9
 
-var putAtStart="\\begin{enumerate}\\squishlist\n\\setlength{\\parindent}{.25in}\n\\item \n\\end{enumerate}";
-var startingplace = 65;
+var textBlock =  TW.target.selection;
+var putAtStart = "\\begin{enumerate}\\squishlist\n\\setlength{\\parindent}{.25in}\n\\item ";
+var putAtEnd = "\n\\end{enumerate}";
 
-if (TW.target.text[TW.target.selectionStart-1]!="\n")
+if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
 {
 	putAtStart="\n"+putAtStart;
-	startingplace=startingplace+1;
+}
+if (TW.target.selectionStart+textBlock.length!=TW.target.text.length && TW.target.text[TW.target.selectionStart+textBlock.length]!="\n")
+{
+	putAtEnd=putAtEnd+"\n";
 }
 
-TW.target.insertText(putAtStart);
-TW.target.selectRange(TW.target.selectionStart-1, 1)
-TW.target.selectRange(TW.target.selectionStart-putAtStart.length+startingplace+1, 0)
+TW.target.insertText(putAtStart + textBlock + putAtEnd);
+TW.target.selectRange(TW.target.selectionStart-putAtEnd.length, 0);
 
