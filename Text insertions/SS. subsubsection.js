@@ -12,16 +12,21 @@ var portion = TW.target.text;
 var SS=portion.search("%%%USINGsubsectionNUMBERS");
 var SSS=portion.search("%%%USINGsubsubsectionNUMBERS");
 var PAR=portion.search("%%%USINGparagraphNUMBERS");
+var toPaste;
 
 if (SSS>-1 || PAR>-1)
 {
-	TW.target.insertText("\\subsubsection{}\n");
+	toPaste="\\subsubsection{\u25BA}\n\u2590\u258C";
 } else
 {
-	TW.target.insertText("\\subsubsection*{}\n");
+	toPaste="\\subsubsection*{\u25BA}\n\u2590\u258C";
 }
-TW.target.selectRange(TW.target.selectionStart-2, 0)
-
+if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
+{
+	toPaste="\n"+toPaste;
+}
+TW.target.insertText(toPaste);
+TW.target.selectRange(TW.target.selectionStart-5, 0)
 
 /*
 Type %%%USINGxNUMBERS to use numbers for type x and all supertypes.
