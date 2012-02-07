@@ -1,6 +1,6 @@
 // TeXworksScript
-// Title:  \textup{}\,
-// Description:  inserts \textup{}\,
+// Title:  \mathsf{}
+// Description:  inserts \mathsf{}
 // Author:  Michael Donovan
 // Version: 
 // Date: 
@@ -12,8 +12,8 @@ if (TW.target.selection.length==1 && TW.target.selection.search(/[\u1FAE\u1FAF\u
 {TW.target.insertText("");}
 
 var textBlock =  TW.target.selection;
-var putAtStart = "\\textup{";
-var putAtEnd = "}\\,";
+var putAtStart = "\\mathsf{";
+var putAtEnd = "}";
 var INSERTME = putAtStart + textBlock + putAtEnd;
 var moveBackIfEmpty = putAtEnd.length;
 
