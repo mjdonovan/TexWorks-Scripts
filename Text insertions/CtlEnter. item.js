@@ -14,3 +14,5 @@ if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="
 	putAtStart="\n"+putAtStart;
 }
 TW.target.insertText(putAtStart);
+TW.target.selectRange(TW.target.selectionStart-1, 1);
+TW.target.selectRange(TW.target.selectionStart+1, 0);
