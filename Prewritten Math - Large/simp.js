@@ -8,4 +8,6 @@
 // Context: TeXDocument
 // Shortcut: Alt+S, Alt+I, Alt+M, Alt+P
 
-TW.target.insertText("\\[\\xymatrix@C=2.5cm{\nX_0\n\\ar@<-.5ex>[r]_{s_0}&\\ar@2{->}@<-.5ex>[l]_{d_0,d_1}\nX_1\n\\ar@2{->}@<-.7ex>[r]_{s_0,s_1}&\nX_2\\makebox[0cm][l]{\\,\\ \\ $\\cdots$}\n\\ar@3{->}@<-.7ex>[l]_{d_0,d_1,d_2}\n}\n\%\\qquad\\qquad\\text{a simplicial object.}\n\\]\n");
+TW.target.insertText(
+"\\[\\vcenter{\n\\def\\labelstyle{\\scriptstyle}\n\\xymatrix@C=1.5cm@1{\n\\scrC_0\n\\ar[r]|(.65){s_0}\n&\n\\scrC_1\n\\ar@<-1ex>[l]|(.65){d_0}\n\\ar@<+1ex>[l]|(.65){d_1}\n\\ar@<+1ex>[r]|(.65){s_0}\n\\ar@<-1ex>[r]|(.65){s_1}\n&\n\\scrC_2\n\\ar[l]|(.65){d_1}\n\\ar@<-2ex>[l]|(.65){d_0}\n\\ar@<+2ex>[l]|(.65){d_2}\n\\ar[r]|(.65){s_1}\n\\ar@<+2ex>[r]|(.65){s_0}\n\\ar@<-2ex>[r]|(.65){s_2}\n&\n\\scrC_3\\makebox[0cm][l]{\\,$\\cdots $}\n\\ar@<-3ex>[l]|(.65){d_0}\n\\ar@<-1ex>[l]|(.65){d_1}\n\\ar@<+1ex>[l]|(.65){d_2}\n\\ar@<+3ex>[l]|(.65){d_3}\n}}\\]\n"
+);
