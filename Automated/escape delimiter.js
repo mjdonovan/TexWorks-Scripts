@@ -119,6 +119,7 @@ Strip flags
 to
 functiondef
 inverse and direct limit.
+everything in 'text transforms' and 'brackets'
 */
 
 
