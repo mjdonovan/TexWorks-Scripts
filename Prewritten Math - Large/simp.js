@@ -1,5 +1,5 @@
 // TeXworksScript
-// Title:  Insert simplicial object
+// Title:  simplicial object
 // Description: Inserts a simplicial object
 // Author:  Michael Donovan
 // Version: 0.2
