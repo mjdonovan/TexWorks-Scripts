@@ -448,7 +448,11 @@ else
 	}
 }
 // If you only change the first entry, then it'll be taken as an object, not an arrow!
-	if(BPos+CPos+DPos+EPos+FPos+GPos+HPos+IPos+JPos+KPos+LPos+MPos+NPos+OPos+WPos+XPos+YPos+ZPos == "" && APos.replace(/[udlr]/g,'')!="")
+	if(BPos+CPos+DPos+EPos+FPos+GPos+HPos+
+	   IPos+JPos+KPos+LPos+MPos+NPos+OPos+
+	   WPos+XPos+YPos+ZPos == "" 
+	   && APos.replace(/[udlr]/g,'')!=""
+          )
 	{
 		ARROWTEXT = APos;
 	}
