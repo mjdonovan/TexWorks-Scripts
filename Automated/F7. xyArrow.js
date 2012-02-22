@@ -15,7 +15,7 @@ var MatBuildStart=portion.search("\n\n@@@ xymatrix Builder START");
 var ArBuildStart=portion.search("\n\n@@@ Arrow Builder START");
 
 var StartingText=
-"\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\nA: Direction    @@A@@ r\u25BA\nB: Superscript  @@B@@ \u2590\u258C\u25BA\nC: Subscript    @@C@@ \u2590\u258C\u25BA\nD: Arrow type   @@D@@ \u2590\u258C\u25BA\nE: Supscr pos   @@E@@ \u2590\u258C\u25BA\nF: Subscr pos   @@F@@ \u2590\u258C\u25BA\nG: Bend         @@G@@ \u2590eg \u258C^1em\u25BA\nH: Slide        @@H@@ \u2590eg \u258C+.5ex\u25BA\nI: Break Middle @@I@@ \u2590eg \\hole\u258C\u25BA\nJ: Pass Under   @@J@@ \u2590eg\u25BA [r][rr]\u258C\u25BA\nK: Supscr label @@K@@ \u2590\u258C\u25BA\nL: Subscr label @@L@@ \u2590\u258C\u25BA\nM: Middle label @@M@@ \u2590\u258C\u25BA\nN: Tail pos     @@N@@ \u2590eg \"1\"\u258C\u25BA\nO: Head pos     @@O@@ \u2590eg\u25BA [l]\u258C\u25BA\nW: 2-cell direc @@W@@ \u2590\u258C\u25BA\nX: 2-arr label  @@X@@ \u2590eg a\u258C\u25BA\nY: omit curves? @@Y@@ \u2590\u258C\u25BA\nZ: Extra curve  @@Z@@ \u2590eg 5-9\u258C\nEndEndEndEndEndEndEndEndEndEnd\n 1     2      3    4    5    6   7   8  9    0\n->>  ^{(}->  >->  |->  -->  ..>  ~>  =  =>  none\n@@@ Arrow Builder END\n\n"
+"\n\n@@@ Arrow Builder START\nStartStartStartStartStartStart\n\nA: Direction    @@A@@ r\u25BA\nN: Tail pos     @@N@@ \u263C\"1\"\nO: Head pos     @@O@@ \u263C[l]\n\nB: Superscript  @@B@@ \u2590\u258C\u25BA\nE: Supscr pos   @@E@@ \nK: Supscr label @@K@@ \n\nC: Subscript    @@C@@ \u2590\u258C\u25BA\nF: Subscr pos   @@F@@ \nL: Subscr label @@L@@ \n\nI: Middle       @@I@@ \u2590\u258C\u25BA\nP: Middle pos   @@P@@ \nM: Middle label @@M@@ \n\nD: Arrow type   @@D@@ \u2590\u258C\u25BA\nG: Bend         @@G@@ \u2590\u263C\u258C^1em\u25BA\nH: Slide        @@H@@ \u2590\u263C\u258C.5ex\u25BA\nQ: Colour       @@Q@@ \u2590\u263C\u258Cred\u25BA\nJ: Pass Under   @@J@@ \u2590\u263C\u25BA[r][rr]\u258C\u25BA\n\nW: 2-cell direc @@W@@ \u2590\u258C\u25BA\nX: 2-arr label  @@X@@ \u2590\u263Ca\u258C\u25BA\nY: omit curves? @@Y@@ \u2590\u258C\u25BA\nZ: Extra curve  @@Z@@ \u2590\u263C5-9\u258C\n\nEndEndEndEndEndEndEndEndEndEnd\n 1 \u2551  2   \u2551 3 \u2551 4 \u2551 5 \u2551 6 \u25517 \u25518\u25519 \u2551 0\n->>\u2551^{(}->\u2551>->\u2551|->\u2551-->\u2551..>\u2551~>\u2551=\u2551=>\u2551none\n@@@ Arrow Builder END\n\n"
 
 //THE BIG IF STATEMENT -  
 if (MatBuildStart>-1)
@@ -226,7 +226,7 @@ else if (ArBuildStart<0)
 {
 	TW.target.insertText(StartingText);
 	TW.target.selectRange(TW.target.selectionStart-1, 1);
-	TW.target.selectRange(TW.target.selectionStart-StartingText.length+1+79, 1);
+	TW.target.selectRange(TW.target.selectionStart-StartingText.length+1+80, 1);
 }
 else
 {
@@ -234,45 +234,76 @@ else
 	var BuilderContents = portion.substring(ArBuildStart,BuildEnd);
 	TW.target.selectRange(ArBuildStart, BuildEnd-ArBuildStart);
 	
-	var APos=BuilderContents.search("\nA: Direction    @@A@@ ");
-	var BPos=BuilderContents.search("\nB: Superscript  @@B@@ ");
-	var CPos=BuilderContents.search("\nC: Subscript    @@C@@ ");
-	var DPos=BuilderContents.search("\nD: Arrow type   @@D@@ ");
-	var EPos=BuilderContents.search("\nE: Supscr pos   @@E@@ ");
-	var FPos=BuilderContents.search("\nF: Subscr pos   @@F@@ ");
-	var GPos=BuilderContents.search("\nG: Bend         @@G@@ ");
-	var HPos=BuilderContents.search("\nH: Slide        @@H@@ ");
-	var IPos=BuilderContents.search("\nI: Break Middle @@I@@ ");
-	var JPos=BuilderContents.search("\nJ: Pass Under   @@J@@ ");
+	
+
+	var APos=BuilderContents.search("@@A@@ ")-17;
+	var BPos=BuilderContents.search("@@B@@ ")-17;
+	var CPos=BuilderContents.search("@@C@@ ")-17;
+	var DPos=BuilderContents.search("@@D@@ ")-17;
+	var EPos=BuilderContents.search("@@E@@ ")-17;
+	var FPos=BuilderContents.search("@@F@@ ")-17;
+	var GPos=BuilderContents.search("@@G@@ ")-17;
+	var HPos=BuilderContents.search("@@H@@ ")-17;
+	var IPos=BuilderContents.search("@@I@@ ")-17;
+	var JPos=BuilderContents.search("@@J@@ ")-17;
 	var KPos=BuilderContents.search("@@K@@ ")-17;
 	var LPos=BuilderContents.search("@@L@@ ")-17;
 	var MPos=BuilderContents.search("@@M@@ ")-17;
 	var NPos=BuilderContents.search("@@N@@ ")-17;
 	var OPos=BuilderContents.search("@@O@@ ")-17;
-	var WPos=BuilderContents.search("\nW: 2-cell direc @@W@@ ");
+	var PPos=BuilderContents.search("@@P@@ ")-17;
+	var QPos=BuilderContents.search("@@Q@@ ")-17;
+	var WPos=BuilderContents.search("@@W@@ ")-17;
 	var XPos=BuilderContents.search("@@X@@ ")-17;
 	var YPos=BuilderContents.search("@@Y@@ ")-17;
-	var ZPos=BuilderContents.search("\nZ: Extra curve  @@Z@@ ");
+	var ZPos=BuilderContents.search("@@Z@@ ")-17;
+
 	var ENDS=BuilderContents.search("\nEndEndEndEndEndEndEndEndEndEnd");
-	APos=BuilderContents.substring(APos+23,BPos);
-	BPos=BuilderContents.substring(BPos+23,CPos);
-	CPos=BuilderContents.substring(CPos+23,DPos);
-	DPos=BuilderContents.substring(DPos+23,EPos);
-	EPos=BuilderContents.substring(EPos+23,FPos);
-	FPos=BuilderContents.substring(FPos+23,GPos);
-	GPos=BuilderContents.substring(GPos+23,HPos);
-	HPos=BuilderContents.substring(HPos+23,IPos);
-	IPos=BuilderContents.substring(IPos+23,JPos);
-	JPos=BuilderContents.substring(JPos+23,KPos);
-	KPos=BuilderContents.substring(KPos+23,LPos);
-	LPos=BuilderContents.substring(LPos+23,MPos);
-	MPos=BuilderContents.substring(MPos+23,NPos);
+
+
+	APos=BuilderContents.substring(APos+23,NPos);
 	NPos=BuilderContents.substring(NPos+23,OPos);
-	OPos=BuilderContents.substring(OPos+23,WPos);
+	OPos=BuilderContents.substring(OPos+23,BPos-1);
+	BPos=BuilderContents.substring(BPos+23,EPos);
+	EPos=BuilderContents.substring(EPos+23,KPos);
+	KPos=BuilderContents.substring(KPos+23,CPos-1);
+	CPos=BuilderContents.substring(CPos+23,FPos);
+	FPos=BuilderContents.substring(FPos+23,LPos);
+	LPos=BuilderContents.substring(LPos+23,IPos-1);
+	IPos=BuilderContents.substring(IPos+23,PPos);
+	PPos=BuilderContents.substring(PPos+23,MPos);
+	MPos=BuilderContents.substring(MPos+23,DPos-1);
+	DPos=BuilderContents.substring(DPos+23,GPos);
+	GPos=BuilderContents.substring(GPos+23,HPos);
+	HPos=BuilderContents.substring(HPos+23,QPos);
+	QPos=BuilderContents.substring(QPos+23,JPos);
+	JPos=BuilderContents.substring(JPos+23,WPos-1);
 	WPos=BuilderContents.substring(WPos+23,XPos);
 	XPos=BuilderContents.substring(XPos+23,YPos);
 	YPos=BuilderContents.substring(YPos+23,ZPos);
-	ZPos=BuilderContents.substring(ZPos+23,ENDS);
+	ZPos=BuilderContents.substring(ZPos+23,ENDS-1);
+
+	/*TW.target.insertText("Aa "+APos+"\n");
+	TW.target.insertText("Nn "+NPos+"\n");
+	TW.target.insertText("Oo "+OPos+"\n\n");
+	TW.target.insertText("Bb "+BPos+"\n");
+	TW.target.insertText("Ee "+EPos+"\n");
+	TW.target.insertText("Kk "+KPos+"\n\n");
+	TW.target.insertText("Cc "+CPos+"\n");
+	TW.target.insertText("Ff "+FPos+"\n");
+	TW.target.insertText("Ll "+LPos+"\n\n");
+	TW.target.insertText("Ii "+IPos+"\n");
+	TW.target.insertText("Pp "+PPos+"\n");
+	TW.target.insertText("Mm "+MPos+"\n\n");
+	TW.target.insertText("Dd "+DPos+"\n");
+	TW.target.insertText("Gg "+GPos+"\n");
+	TW.target.insertText("Hh "+HPos+"\n");
+	TW.target.insertText("Qq "+QPos+"\n");
+	TW.target.insertText("Jj "+JPos+"\n\n");
+	TW.target.insertText("Ww "+WPos+"\n");
+	TW.target.insertText("Xx "+XPos+"\n");
+	TW.target.insertText("Yy "+YPos+"\n");
+	TW.target.insertText("Zz "+ZPos+"\n");*/
 
 
 	APos = APos.replace(/[\u2590\u258C\u25BA]/g,'');
@@ -290,30 +321,34 @@ else
 	MPos = MPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	NPos = NPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	OPos = OPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	PPos = PPos.replace(/[\u2590\u258C\u25BA]/g,'');
+	QPos = QPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	WPos = WPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	XPos = XPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	YPos = YPos.replace(/[\u2590\u258C\u25BA]/g,'');
 	ZPos = ZPos.replace(/[\u2590\u258C\u25BA]/g,'');
 
-	if (APos.substring(0,2)=="eg") { APos=""}
-	if (BPos.substring(0,2)=="eg") { BPos=""}
-	if (CPos.substring(0,2)=="eg") { CPos=""}
-	if (DPos.substring(0,2)=="eg") { DPos=""}
-	if (EPos.substring(0,2)=="eg") { EPos=""}
-	if (FPos.substring(0,2)=="eg") { FPos=""}
-	if (GPos.substring(0,2)=="eg") { GPos=""}
-	if (HPos.substring(0,2)=="eg") { HPos=""}
-	if (IPos.substring(0,2)=="eg") { IPos=""}
-	if (JPos.substring(0,2)=="eg") { JPos=""}
-	if (KPos.substring(0,2)=="eg") { KPos=""}
-	if (LPos.substring(0,2)=="eg") { LPos=""}
-	if (MPos.substring(0,2)=="eg") { MPos=""}
-	if (NPos.substring(0,2)=="eg") { NPos=""}
-	if (OPos.substring(0,2)=="eg") { OPos=""}
-	if (WPos.substring(0,2)=="eg") { WPos=""}
-	if (XPos.substring(0,2)=="eg") { XPos=""}
-	if (YPos.substring(0,2)=="eg") { YPos=""}
-	if (ZPos.substring(0,2)=="eg") { ZPos=""}
+	if (APos.substring(0,1)=="\u263C") { APos=""}
+	if (BPos.substring(0,1)=="\u263C") { BPos=""}
+	if (CPos.substring(0,1)=="\u263C") { CPos=""}
+	if (DPos.substring(0,1)=="\u263C") { DPos=""}
+	if (EPos.substring(0,1)=="\u263C") { EPos=""}
+	if (FPos.substring(0,1)=="\u263C") { FPos=""}
+	if (GPos.substring(0,1)=="\u263C") { GPos=""}
+	if (HPos.substring(0,1)=="\u263C") { HPos=""}
+	if (IPos.substring(0,1)=="\u263C") { IPos=""}
+	if (JPos.substring(0,1)=="\u263C") { JPos=""}
+	if (KPos.substring(0,1)=="\u263C") { KPos=""}
+	if (LPos.substring(0,1)=="\u263C") { LPos=""}
+	if (MPos.substring(0,1)=="\u263C") { MPos=""}
+	if (NPos.substring(0,1)=="\u263C") { NPos=""}
+	if (OPos.substring(0,1)=="\u263C") { OPos=""}
+	if (PPos.substring(0,1)=="\u263C") { PPos=""}
+	if (QPos.substring(0,1)=="\u263C") { QPos=""}
+	if (WPos.substring(0,1)=="\u263C") { WPos=""}
+	if (XPos.substring(0,1)=="\u263C") { XPos=""}
+	if (YPos.substring(0,1)=="\u263C") { YPos=""}
+	if (ZPos.substring(0,1)=="\u263C") { ZPos=""}
 
 	if (DPos=="1" || DPos.substr(0,3)=="epi" || DPos.substr(0,3)=="fib" || DPos.substr(0,3)=="sur")
 	        {DPos="->>"}
@@ -336,10 +371,22 @@ else
 	if (DPos=="0" || DPos.substr(0,3)=="non" || DPos.substr(0,3)=="emp" || DPos.substr(0,3)=="bla")
 		{DPos="BLANKME"}//this is a flag for later
 
+	if (QPos=="r" || QPos=="R")
+	        {QPos="red"}
+	if (QPos=="b" || QPos=="B")
+	        {QPos="blue"}
+	if (QPos=="y" || QPos=="Y")
+	        {QPos="yellow"}
+	if (QPos=="g" || QPos=="G")
+	        {QPos="green"}
+	if (QPos=="o" || QPos=="O")
+	        {QPos="orange"}
+	if (QPos=="m" || QPos=="M")
+	        {QPos="magenta"}
 
 	var ARROWTEXT = "\\ar"
 if(WPos.length>0){
-//	ARROWTEXT = "%\\usepackage[all,2cell]{xy}\n%\\UseAllTwocells\n"
+	//ARROWTEXT = "%\\usepackage[all,2cell]{xy}\n%\\UseAllTwocells\n"
 	ARROWTEXT = "";
 	ARROWTEXT = ARROWTEXT + "\\xtwocell";
 	ARROWTEXT = ARROWTEXT + "["+ WPos + "]{}";
@@ -362,6 +409,7 @@ else
 		if (DPos=="BLANKME") {DPos=""}
 		ARROWTEXT = ARROWTEXT + "@{"+ DPos + "}";
 	}
+	if (QPos.length>0) {ARROWTEXT = ARROWTEXT + "@["+ QPos + "]";}
 	if (GPos.length>0) {ARROWTEXT = ARROWTEXT + "@/"+ GPos + "/";}
 	if (HPos.length>0) {ARROWTEXT = ARROWTEXT + "@<"+ HPos + ">";}
 	if (JPos.length>0) {ARROWTEXT = ARROWTEXT + "'"+ JPos;}
@@ -389,9 +437,12 @@ else
 		if (LPos.length>0)
 			{ARROWTEXT = ARROWTEXT + "=\""+ LPos + "\"";}
 	}
-	if (IPos.length>0) 
+	if (IPos.length>0 || PPos.length>0 || MPos.length>0)
 	{
-		ARROWTEXT = ARROWTEXT + "|{"+ IPos + "}";
+		ARROWTEXT = ARROWTEXT + "|";
+		if (MPos.length==0) {ARROWTEXT = ARROWTEXT + "-";}
+		if (PPos.length>0) {ARROWTEXT = ARROWTEXT + "("+ PPos + ")";}
+		ARROWTEXT = ARROWTEXT + "{"+ IPos + "}";
 		if (MPos.length>0)
 			{ARROWTEXT = ARROWTEXT + "=\""+ MPos + "\"";}
 	}
@@ -401,5 +452,5 @@ else
 	{
 		ARROWTEXT = APos;
 	}
-	TW.target.insertText(ARROWTEXT+"\n");
+	TW.target.insertText(ARROWTEXT+"\n"+PPos);
 }
