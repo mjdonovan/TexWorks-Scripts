@@ -8,6 +8,8 @@
 // Context: TeXDocument
 // Shortcut: Insert
 
+function test3(str) {return /^\d{1,2}$/.test(str);} //test str is a 1-2 digit integer
+
 var textBlock =  TW.target.selection;
 var startingposition = TW.target.selectionStart;
 var portion = TW.target.text;
@@ -151,12 +153,16 @@ if (MatBuildStart>-1)
 	{
 		SETTINGS=SETTINGS+"@"+IPos;
 	}
-	if (APos.length==2 && APos.match(/[1-9][1-9]/)!=null)
+	
+	var sRes = APos.split(" ");
+	var numR = 0;
+	var numC = 0;
+	var NumsGood=0;
+	if (sRes.length!=1 && sRes.length!=2)
+		{NumsGood=-1}
+	else if (sRes.length==1 && APos.length==2 && APos.match(/[1-9][1-9]/)!=null)
 	{
-		var numR = 0;
-		var numC = 0;
-		var R;
-		var C;
+		NumsGood=1;
 		if (APos[0]=="1") {numR =1}
 		if (APos[0]=="2") {numR =2}
 		if (APos[0]=="3") {numR =3}
@@ -166,7 +172,6 @@ if (MatBuildStart>-1)
 		if (APos[0]=="7") {numR =7}
 		if (APos[0]=="8") {numR =8}
 		if (APos[0]=="9") {numR =9}
-
 		if (APos[1]=="1") {numC =1}
 		if (APos[1]=="2") {numC =2}
 		if (APos[1]=="3") {numC =3}
@@ -176,6 +181,15 @@ if (MatBuildStart>-1)
 		if (APos[1]=="7") {numC =7}
 		if (APos[1]=="8") {numC =8}
 		if (APos[1]=="9") {numC =9}
+	}
+	if (NumsGood==0 && sRes.length==2 && test3(sRes[0])&& test3(sRes[1]))
+	{
+		NumsGood=1;
+		numR= parseInt(sRes[0] ,10);
+		numC= parseInt(sRes[1] ,10);
+	}
+	if (NumsGood==1)
+	{
 		for (R=1;R<=numR;R++)
 		{
 			for (C=1;C<=numC;C++)
