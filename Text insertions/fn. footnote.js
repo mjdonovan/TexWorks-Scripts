@@ -9,7 +9,7 @@
 // Shortcut: Alt+F,Alt+N
     
 var textBlock =  TW.target.selection;
-var putAtStart = "\\footnote{";
+var putAtStart = "%footnote:\n\\footnote{";
 var putAtEnd = "}";
 var INSERTME = putAtStart + textBlock + putAtEnd;
 var moveBackIfEmpty = putAtEnd.length;
