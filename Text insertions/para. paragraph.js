@@ -16,17 +16,17 @@ var toPaste;
 
 if (PAR>-1)
 {
-	toPaste="\\paragraph{\u25BA}\n\u2590\u258C";
+	toPaste="\\paragraph{\u25BA:}\n\u2590\u258C";
 } else
 {
-	toPaste="\\paragraph*{\u25BA}\n\u2590\u258C";
+	toPaste="\\paragraph*{\u25BA:}\n\u2590\u258C";
 }
 if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
 {
 	toPaste="\n"+toPaste;
 }
 TW.target.insertText(toPaste);
-TW.target.selectRange(TW.target.selectionStart-5, 0)
+TW.target.selectRange(TW.target.selectionStart-6, 0)
 
 /*
 Type %%%USINGxNUMBERS to use numbers for type x and all supertypes.
