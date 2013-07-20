@@ -9,4 +9,4 @@
 // Shortcut: Alt+Shift+O,Alt+*
     
 TW.target.insertText("\\\u1F42bigotimes_{\u06F7\u25BA}^{\u06F8}");
-TW.target.selectRange(TW.target.selectionStart-18, 1)
+TW.target.selectRange(TW.target.selectionStart-19, 1)
