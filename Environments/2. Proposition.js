@@ -1,6 +1,6 @@
 // TeXworksScript
 // Title:  2. Proposition
-// Description: Starts a prop*
+// Description: Starts a prop
 // Author:  Michael Donovan
 // Version: 0.2
 // Date: 2011-05-17
@@ -8,8 +8,8 @@
 // Context: TeXDocument
 // Shortcut: Alt+2
 
-var putAtStart="\\begin{prop*}\n\n\\end{prop*}"
-var startingplace = 14;
+var putAtStart="\\begin{prop}\n\n\\end{prop}"
+var startingplace = 13;
 
 if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
 {

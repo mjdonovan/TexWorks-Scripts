@@ -8,8 +8,8 @@
 // Context: TeXDocument
 // Shortcut: Alt+6
 
-var putAtStart="\\begin{defn*}\n\n\\end{defn*}"
-var startingplace = 14;
+var putAtStart="\\begin{defn}\n\n\\end{defn}"
+var startingplace = 13;
 
 if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
 {

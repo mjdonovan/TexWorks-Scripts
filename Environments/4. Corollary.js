@@ -8,8 +8,8 @@
 // Context: TeXDocument
 // Shortcut: Alt+4
 
-var putAtStart="\\begin{cor*}\n\n\\end{cor*}"
-var startingplace = 13;
+var putAtStart="\\begin{cor}\n\n\\end{cor}"
+var startingplace = 12;
 
 if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
 {

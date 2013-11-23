@@ -8,8 +8,8 @@
 // Context: TeXDocument
 // Shortcut: Alt+7
 
-var putAtStart="\\begin{lem*}\n\n\\end{lem*}"
-var startingplace = 13;
+var putAtStart="\\begin{lem}\n\n\\end{lem}"
+var startingplace = 12;
 
 if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
 {

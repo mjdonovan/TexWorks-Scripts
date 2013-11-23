@@ -1,6 +1,6 @@
 // TeXworksScript
 // Title:  3. Theorem
-// Description: Starts a thm*
+// Description: Starts a thm
 // Author:  Michael Donovan
 // Version: 0.2
 // Date: 2011-05-17
@@ -8,8 +8,8 @@
 // Context: TeXDocument
 // Shortcut: Alt+3
 
-var putAtStart="\\begin{thm*}\n\n\\end{thm*}"
-var startingplace = 13;
+var putAtStart="\\begin{thm}\n\n\\end{thm}"
+var startingplace = 12;
 
 if (TW.target.selectionStart!=0 && TW.target.text[TW.target.selectionStart-1]!="\n")
 {
