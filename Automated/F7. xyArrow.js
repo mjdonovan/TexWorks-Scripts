@@ -387,7 +387,7 @@ else
 	if (DPos=="2" || DPos.substr(0,3)=="mon" || DPos.substr(0,3)=="cof" || DPos.substr(0,3)=="inj")
 		{DPos="^{(}->"}
 	if (DPos=="3")
-		{DPos=">->"} 
+		{DPos=" >->"} 
 	if (DPos=="4" || DPos.substr(0,3)=="map")
 		{DPos="|->"}
 	if (DPos=="5" || DPos.substr(0,3)=="das")
